@@ -1,0 +1,41 @@
+.difficulty-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.difficulty-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  font-weight: 600;
+  transition: border-color var(--transition), background-color var(--transition),
+    color var(--transition);
+}
+
+.difficulty-option:hover {
+  border-color: var(--color-primary);
+}
+
+.difficulty-option.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.difficulty-count {
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  background-color: var(--color-surface-2);
+  color: var(--color-text-muted);
+}
+
+.difficulty-option.selected .difficulty-count {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: inherit;
+}
