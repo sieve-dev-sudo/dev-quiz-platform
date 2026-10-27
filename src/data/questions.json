@@ -1,0 +1,322 @@
+[
+  {
+    "id": "html-1",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Text Markup Language",
+      "High Tech Modern Language",
+      "Hyperlink and Text Management Language",
+      "Home Tool Markup Language"
+    ],
+    "answerIndex": 0,
+    "explanation": "HTML stands for Hyper Text Markup Language, the standard language for structuring web pages."
+  },
+  {
+    "id": "html-2",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which tag creates the largest heading?",
+    "options": ["<head>", "<h6>", "<h1>", "<heading>"],
+    "answerIndex": 2,
+    "explanation": "<h1> is the largest and most important heading. Headings go from <h1> down to <h6>."
+  },
+  {
+    "id": "html-3",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which attribute provides alternative text for an image?",
+    "options": ["title", "alt", "src", "desc"],
+    "answerIndex": 1,
+    "explanation": "The alt attribute describes the image for screen readers and is shown if the image fails to load."
+  },
+  {
+    "id": "html-4",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which semantic element is meant for a block of navigation links?",
+    "options": ["<menu>", "<links>", "<section>", "<nav>"],
+    "answerIndex": 3,
+    "explanation": "<nav> marks a section of major navigation links, which helps accessibility and SEO."
+  },
+  {
+    "id": "html-5",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "What does the defer attribute do on a <script> tag?",
+    "options": [
+      "Blocks HTML parsing until the script runs",
+      "Downloads the script in parallel and runs it after the HTML is parsed",
+      "Runs the script only when the user clicks the page",
+      "Prevents the script from ever running"
+    ],
+    "answerIndex": 1,
+    "explanation": "defer downloads the script without blocking parsing and executes it in order after the document is parsed."
+  },
+  {
+    "id": "html-6",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "Which element should wrap self-contained content that could be distributed on its own, like a blog post?",
+    "options": ["<div>", "<aside>", "<article>", "<main>"],
+    "answerIndex": 2,
+    "explanation": "<article> represents independent, self-contained content such as a post, news story or comment."
+  },
+  {
+    "id": "css-1",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which CSS property changes the text color?",
+    "options": ["font-color", "text-color", "color", "foreground"],
+    "answerIndex": 2,
+    "explanation": "The color property sets the text color. background-color sets the background."
+  },
+  {
+    "id": "css-2",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "How do you select an element with id=\"main\"?",
+    "options": [".main", "#main", "main", "*main"],
+    "answerIndex": 1,
+    "explanation": "# selects by id, while . selects by class."
+  },
+  {
+    "id": "css-3",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "What is the default value of the position property?",
+    "options": ["relative", "absolute", "fixed", "static"],
+    "answerIndex": 3,
+    "explanation": "Elements are position: static by default, meaning they follow the normal document flow."
+  },
+  {
+    "id": "css-4",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "In Flexbox, which property aligns items along the main axis?",
+    "options": ["align-items", "justify-content", "align-content", "flex-direction"],
+    "answerIndex": 1,
+    "explanation": "justify-content aligns items on the main axis. align-items aligns them on the cross axis."
+  },
+  {
+    "id": "css-5",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "Which selector has the highest specificity?",
+    "options": ["nav a", ".nav .link", "#nav .link", "a:hover"],
+    "answerIndex": 2,
+    "explanation": "An id selector outweighs any number of class or element selectors, so #nav .link wins."
+  },
+  {
+    "id": "css-6",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "What does box-sizing: border-box do?",
+    "options": [
+      "Adds a border around every element",
+      "Includes padding and border inside the element's width and height",
+      "Removes margins from the element",
+      "Makes the element a flex container"
+    ],
+    "answerIndex": 1,
+    "explanation": "With border-box, the width and height you set already include padding and border, which makes layouts easier."
+  },
+  {
+    "id": "javascript-1",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "Which keyword declares a variable that cannot be reassigned?",
+    "options": ["var", "let", "const", "static"],
+    "answerIndex": 2,
+    "explanation": "const creates a binding that cannot be reassigned. Objects declared with const can still be mutated."
+  },
+  {
+    "id": "javascript-2",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "What does typeof null return?",
+    "options": ["\"null\"", "\"undefined\"", "\"object\"", "\"number\""],
+    "answerIndex": 2,
+    "explanation": "typeof null returns \"object\". This is a long-standing bug in JavaScript kept for backward compatibility."
+  },
+  {
+    "id": "javascript-3",
+    "category": "javascript",
+    "difficulty": "medium",
+    "question": "What does [1, 2, 3].map(x => x * 2) return?",
+    "options": ["[1, 2, 3]", "[2, 4, 6]", "12", "undefined"],
+    "answerIndex": 1,
+    "explanation": "map returns a new array with the callback applied to each element."
+  },
+  {
+    "id": "javascript-4",
+    "category": "javascript",
+    "difficulty": "medium",
+    "question": "What is the difference between == and ===?",
+    "options": [
+      "There is no difference",
+      "=== compares value and type without type coercion",
+      "== is faster than ===",
+      "=== only works with numbers"
+    ],
+    "answerIndex": 1,
+    "explanation": "== converts types before comparing, while === requires both value and type to match."
+  },
+  {
+    "id": "javascript-5",
+    "category": "javascript",
+    "difficulty": "hard",
+    "question": "What does console.log(0.1 + 0.2 === 0.3) print?",
+    "options": ["true", "false", "undefined", "NaN"],
+    "answerIndex": 1,
+    "explanation": "Floating point math gives 0.30000000000000004, so the strict comparison is false."
+  },
+  {
+    "id": "javascript-6",
+    "category": "javascript",
+    "difficulty": "hard",
+    "question": "In what order are the letters logged? console.log('A'); setTimeout(() => console.log('B'), 0); Promise.resolve().then(() => console.log('C')); console.log('D');",
+    "options": ["A B C D", "A D B C", "A D C B", "A C D B"],
+    "answerIndex": 2,
+    "explanation": "Synchronous code runs first (A, D), then microtasks like promises (C), then macrotasks like setTimeout (B)."
+  },
+  {
+    "id": "react-1",
+    "category": "react",
+    "difficulty": "easy",
+    "question": "Which hook adds state to a function component?",
+    "options": ["useEffect", "useState", "useRef", "useContext"],
+    "answerIndex": 1,
+    "explanation": "useState returns the current state value and a function to update it."
+  },
+  {
+    "id": "react-2",
+    "category": "react",
+    "difficulty": "easy",
+    "question": "What does JSX stand for?",
+    "options": ["Java Syntax Extension", "JavaScript XML", "JSON Syntax Exchange", "JavaScript Extra"],
+    "answerIndex": 1,
+    "explanation": "JSX stands for JavaScript XML. It lets you write HTML-like markup inside JavaScript."
+  },
+  {
+    "id": "react-3",
+    "category": "react",
+    "difficulty": "medium",
+    "question": "Why does React need a key prop when rendering a list?",
+    "options": [
+      "To style each item",
+      "To help React identify which items changed, were added or removed",
+      "To make the list sortable",
+      "Keys are only required for tables"
+    ],
+    "answerIndex": 1,
+    "explanation": "Stable, unique keys let React match items between renders and update the list efficiently."
+  },
+  {
+    "id": "react-4",
+    "category": "react",
+    "difficulty": "medium",
+    "question": "When does useEffect(() => {...}, []) run?",
+    "options": [
+      "On every render",
+      "Only after the first render",
+      "Only when the component unmounts",
+      "Never"
+    ],
+    "answerIndex": 1,
+    "explanation": "An empty dependency array means the effect runs once after the component first mounts."
+  },
+  {
+    "id": "react-5",
+    "category": "react",
+    "difficulty": "hard",
+    "question": "Which hook memoizes an expensive computed value between renders?",
+    "options": ["useCallback", "useMemo", "useRef", "useReducer"],
+    "answerIndex": 1,
+    "explanation": "useMemo caches a computed value and only recalculates it when its dependencies change."
+  },
+  {
+    "id": "react-6",
+    "category": "react",
+    "difficulty": "hard",
+    "question": "What is the safest way to update state based on the previous state?",
+    "options": [
+      "setCount(count + 1)",
+      "count = count + 1",
+      "setCount(prev => prev + 1)",
+      "this.state.count++"
+    ],
+    "answerIndex": 2,
+    "explanation": "The updater function always receives the latest state, which avoids bugs from stale values."
+  },
+  {
+    "id": "git-1",
+    "category": "git",
+    "difficulty": "easy",
+    "question": "Which command creates a new Git repository?",
+    "options": ["git start", "git init", "git create", "git new"],
+    "answerIndex": 1,
+    "explanation": "git init creates a new, empty repository in the current folder."
+  },
+  {
+    "id": "git-2",
+    "category": "git",
+    "difficulty": "easy",
+    "question": "Which command shows changed and untracked files?",
+    "options": ["git log", "git diff", "git status", "git show"],
+    "answerIndex": 2,
+    "explanation": "git status lists staged, unstaged and untracked files in the working directory."
+  },
+  {
+    "id": "git-3",
+    "category": "git",
+    "difficulty": "medium",
+    "question": "Which command creates a new branch and switches to it?",
+    "options": [
+      "git branch <name>",
+      "git checkout -b <name>",
+      "git switch <name>",
+      "git merge <name>"
+    ],
+    "answerIndex": 1,
+    "explanation": "git checkout -b creates the branch and switches to it in one step. git switch -c does the same."
+  },
+  {
+    "id": "git-4",
+    "category": "git",
+    "difficulty": "medium",
+    "question": "What does git pull do?",
+    "options": [
+      "Uploads local commits to the remote",
+      "Fetches changes from the remote and merges them into the current branch",
+      "Deletes the remote branch",
+      "Creates a pull request"
+    ],
+    "answerIndex": 1,
+    "explanation": "git pull is git fetch followed by git merge (or rebase, if configured)."
+  },
+  {
+    "id": "git-5",
+    "category": "git",
+    "difficulty": "hard",
+    "question": "What does git reset --hard <commit> do?",
+    "options": [
+      "Creates a new commit that undoes changes",
+      "Moves the branch to that commit and discards all uncommitted changes",
+      "Only unstages files",
+      "Deletes the repository"
+    ],
+    "answerIndex": 1,
+    "explanation": "reset --hard moves the branch pointer and overwrites the staging area and working directory. Uncommitted work is lost."
+  },
+  {
+    "id": "git-6",
+    "category": "git",
+    "difficulty": "hard",
+    "question": "Which command safely undoes a commit that was already pushed?",
+    "options": ["git reset --hard", "git revert <commit>", "git rm", "git stash"],
+    "answerIndex": 1,
+    "explanation": "git revert creates a new commit that reverses the changes, so shared history is not rewritten."
+  }
+]
