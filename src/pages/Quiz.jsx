@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import QuestionCard from '../components/QuestionCard'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { QUIZ_STATUS } from '../context/quizReducer'
 import { useQuiz } from '../hooks/useQuiz'
@@ -81,34 +82,14 @@ function Quiz() {
 
   return (
     <section className="card quiz-box">
-      <div className="quiz-meta">
-        <span className="badge">
-          {title} · {difficultyName}
-        </span>
-        <span className="text-muted">
-          Question {currentIndex + 1} of {totalQuestions}
-        </span>
-      </div>
-
-      <h3>{currentQuestion.question}</h3>
-
-      <div className="quiz-options">
-        {currentQuestion.options.map((option, index) => {
-          const isSelected = currentAnswer?.selectedIndex === index
-
-          return (
-            <button
-              key={option}
-              type="button"
-              className={isSelected ? 'btn btn-primary quiz-option' : 'btn btn-outline quiz-option'}
-              onClick={() => answerQuestion(index)}
-              disabled={currentAnswer !== null}
-            >
-              {option}
-            </button>
-          )
-        })}
-      </div>
+      <QuestionCard
+        key={currentQuestion.id}
+        question={currentQuestion}
+        questionNumber={currentIndex + 1}
+        totalQuestions={totalQuestions}
+        selectedIndex={currentAnswer ? currentAnswer.selectedIndex : null}
+        onSelect={answerQuestion}
+      />
 
       {currentAnswer && (
         <p className="text-muted">

@@ -1,35 +1,10 @@
 .quiz-box {
   width: 100%;
-  max-width: 640px;
+  max-width: 680px;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-}
-
-.quiz-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
-  font-size: var(--fs-sm);
-}
-
-.quiz-options {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.quiz-option {
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.quiz-option:disabled {
-  opacity: 1;
-  cursor: default;
+  gap: var(--space-5);
 }
 
 .quiz-actions {

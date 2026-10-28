@@ -1,0 +1,57 @@
+.option-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  text-align: left;
+  transition: border-color var(--transition), background-color var(--transition),
+    transform var(--transition);
+}
+
+.option-button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+}
+
+.option-button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.option-button:disabled {
+  cursor: default;
+}
+
+.option-button.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+}
+
+.option-letter {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  background-color: var(--color-surface-2);
+  color: var(--color-text-muted);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.option-button.selected .option-letter {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.option-text {
+  flex: 1;
+  font-weight: 500;
+}
