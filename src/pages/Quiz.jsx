@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import QuestionCard from '../components/QuestionCard'
+import AnswerFeedback from '../components/AnswerFeedback'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { QUIZ_STATUS } from '../context/quizReducer'
 import { useQuiz } from '../hooks/useQuiz'
@@ -92,12 +93,17 @@ function Quiz() {
       />
 
       {currentAnswer && (
-        <p className="text-muted">
-          {currentAnswer.isCorrect ? 'Correct!' : 'Wrong answer.'} Score: {score}
-        </p>
+        <AnswerFeedback
+          isCorrect={currentAnswer.isCorrect}
+          correctAnswer={currentQuestion.options[currentQuestion.answerIndex]}
+          explanation={currentQuestion.explanation}
+        />
       )}
 
       <div className="quiz-actions">
+        <span className="quiz-live-score">
+          Score: <strong>{score}</strong> / {totalQuestions}
+        </span>
         <button
           type="button"
           className="btn btn-primary"
