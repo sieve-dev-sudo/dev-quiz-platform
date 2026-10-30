@@ -2,8 +2,14 @@ import './OptionButton.css'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 
-function OptionButton({ index, text, isSelected, isDisabled, onSelect }) {
-  const className = isSelected ? 'option-button selected' : 'option-button'
+const STATUS_ICONS = {
+  correct: '✓',
+  wrong: '✗',
+}
+
+function OptionButton({ index, text, status = 'idle', isSelected, isDisabled, onSelect }) {
+  const className = status === 'idle' ? 'option-button' : `option-button ${status}`
+  const icon = STATUS_ICONS[status]
 
   return (
     <button
@@ -13,7 +19,9 @@ function OptionButton({ index, text, isSelected, isDisabled, onSelect }) {
       disabled={isDisabled}
       aria-pressed={isSelected}
     >
-      <span className="option-letter">{LETTERS[index]}</span>
+      <span className="option-letter" aria-hidden={icon ? 'true' : undefined}>
+        {icon ?? LETTERS[index]}
+      </span>
       <span className="option-text">{text}</span>
     </button>
   )
