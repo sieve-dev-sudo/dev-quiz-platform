@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import ProgressBar from '../components/ProgressBar'
 import QuestionCard from '../components/QuestionCard'
 import AnswerFeedback from '../components/AnswerFeedback'
 import { getCategoryById, getDifficultyById } from '../data/categories'
@@ -19,6 +20,8 @@ function Quiz() {
 
   const {
     status,
+    questions,
+    answers,
     currentQuestion,
     currentAnswer,
     currentIndex,
@@ -81,13 +84,24 @@ function Quiz() {
     )
   }
 
+  const steps = questions.map((question, index) => {
+    const answer = answers.find((item) => item.questionId === question.id)
+    if (answer) return answer.isCorrect ? 'correct' : 'wrong'
+    return index === currentIndex ? 'current' : 'upcoming'
+  })
+
   return (
     <section className="card quiz-box">
+      <ProgressBar
+        current={currentIndex + 1}
+        total={totalQuestions}
+        answeredCount={answers.length}
+        steps={steps}
+      />
+
       <QuestionCard
         key={currentQuestion.id}
         question={currentQuestion}
-        questionNumber={currentIndex + 1}
-        totalQuestions={totalQuestions}
         selectedIndex={currentAnswer ? currentAnswer.selectedIndex : null}
         onSelect={answerQuestion}
       />
