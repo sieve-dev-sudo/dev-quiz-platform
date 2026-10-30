@@ -2,6 +2,13 @@ import { getCategoryById, getDifficultyById } from '../data/categories'
 import OptionButton from './OptionButton'
 import './QuestionCard.css'
 
+function getOptionStatus(index, selectedIndex, answerIndex) {
+  if (selectedIndex === null || selectedIndex === undefined) return 'idle'
+  if (index === answerIndex) return 'correct'
+  if (index === selectedIndex) return 'wrong'
+  return 'dimmed'
+}
+
 function QuestionCard({ question, questionNumber, totalQuestions, selectedIndex, onSelect }) {
   const category = getCategoryById(question.category)
   const difficulty = getDifficultyById(question.difficulty)
@@ -31,6 +38,7 @@ function QuestionCard({ question, questionNumber, totalQuestions, selectedIndex,
             key={option}
             index={index}
             text={option}
+            status={getOptionStatus(index, selectedIndex, question.answerIndex)}
             isSelected={selectedIndex === index}
             isDisabled={isAnswered}
             onSelect={onSelect}
