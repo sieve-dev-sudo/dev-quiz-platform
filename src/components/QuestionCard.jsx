@@ -9,25 +9,20 @@ function getOptionStatus(index, selectedIndex, answerIndex) {
   return 'dimmed'
 }
 
-function QuestionCard({ question, questionNumber, totalQuestions, selectedIndex, onSelect }) {
+function QuestionCard({ question, selectedIndex, onSelect }) {
   const category = getCategoryById(question.category)
   const difficulty = getDifficultyById(question.difficulty)
   const isAnswered = selectedIndex !== null && selectedIndex !== undefined
 
   return (
     <article className="question-card">
-      <header className="question-card-header">
-        <div className="question-card-tags">
-          {category && (
-            <span className="badge">
-              {category.icon} {category.name}
-            </span>
-          )}
-          {difficulty && <span className={`badge ${difficulty.badge}`}>{difficulty.name}</span>}
-        </div>
-        <span className="question-card-number">
-          Question {questionNumber} / {totalQuestions}
-        </span>
+      <header className="question-card-tags">
+        {category && (
+          <span className="badge">
+            {category.icon} {category.name}
+          </span>
+        )}
+        {difficulty && <span className={`badge ${difficulty.badge}`}>{difficulty.name}</span>}
       </header>
 
       <h2 className="question-card-title">{question.question}</h2>
