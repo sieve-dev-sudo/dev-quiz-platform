@@ -1,0 +1,119 @@
+.history-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition);
+}
+
+.history-item:hover {
+  border-color: var(--color-primary);
+}
+
+.history-item-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  font-size: 1.5rem;
+  background-color: var(--color-surface-2);
+}
+
+.history-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.history-item-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.history-item-meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* Score */
+.history-item-score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.history-item-percent {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+
+.history-item-fraction {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.history-item-score.tone-success .history-item-percent {
+  color: var(--color-success);
+}
+
+.history-item-score.tone-warning .history-item-percent {
+  color: var(--color-warning);
+}
+
+.history-item-score.tone-error .history-item-percent {
+  color: var(--color-error);
+}
+
+/* Actions */
+.history-item-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.history-item-btn {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+}
+
+.history-item-btn:hover {
+  text-decoration: none;
+}
+
+.history-item-delete {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.history-item-delete:hover {
+  background-color: var(--color-error-soft);
+  color: var(--color-error);
+}
+
+@media (max-width: 600px) {
+  .history-item {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .history-item-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
