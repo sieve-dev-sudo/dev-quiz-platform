@@ -3,6 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
 import QuestionCard from '../components/QuestionCard'
 import AnswerFeedback from '../components/AnswerFeedback'
+import ResultSummary from '../components/ResultSummary'
+import AnswerReview from '../components/AnswerReview'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { QUIZ_STATUS } from '../context/quizReducer'
 import { useQuiz } from '../hooks/useQuiz'
@@ -28,6 +30,8 @@ function Quiz() {
     totalQuestions,
     score,
     isLastQuestion,
+    startedAt,
+    finishedAt,
     startQuiz,
     answerQuestion,
     nextQuestion,
@@ -66,13 +70,17 @@ function Quiz() {
 
   if (status === QUIZ_STATUS.FINISHED) {
     return (
-      <section className="card quiz-box">
-        <h2>{title}</h2>
-        <p className="text-muted">Difficulty: {difficultyName}</p>
-        <p className="quiz-score">
-          You scored {score} / {totalQuestions}
-        </p>
-        <div className="quiz-actions">
+      <div className="quiz-result">
+        <ResultSummary
+          title={title}
+          difficultyName={difficultyName}
+          score={score}
+          total={totalQuestions}
+          startedAt={startedAt}
+          finishedAt={finishedAt}
+        />
+
+        <div className="quiz-actions quiz-result-actions">
           <button type="button" className="btn btn-primary" onClick={handleRestart}>
             Try Again
           </button>
@@ -80,7 +88,9 @@ function Quiz() {
             Back to Home
           </Link>
         </div>
-      </section>
+
+        <AnswerReview questions={questions} answers={answers} />
+      </div>
     )
   }
 

@@ -1,0 +1,118 @@
+.answer-review {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.answer-review-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.answer-review-header h3 {
+  font-size: var(--fs-lg);
+}
+
+/* Tabs */
+.answer-review-tabs {
+  display: inline-flex;
+  padding: var(--space-1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-2);
+}
+
+.review-tab {
+  padding: var(--space-1) var(--space-4);
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.review-tab:hover {
+  color: var(--color-text);
+}
+
+.review-tab.active {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.answer-review-empty {
+  padding: var(--space-5);
+  text-align: center;
+}
+
+/* List */
+.answer-review-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.review-item.correct {
+  border-left-color: var(--color-success);
+}
+
+.review-item.wrong {
+  border-left-color: var(--color-error);
+}
+
+.review-item-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.review-item-number {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.review-item-question {
+  font-weight: 600;
+}
+
+.review-item-line {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.review-answer {
+  font-weight: 600;
+}
+
+.review-answer.correct {
+  color: var(--color-success);
+}
+
+.review-answer.wrong {
+  color: var(--color-error);
+}
+
+.review-item-explanation {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  background-color: var(--color-surface-2);
+}

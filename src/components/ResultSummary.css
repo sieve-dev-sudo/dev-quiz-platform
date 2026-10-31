@@ -1,0 +1,117 @@
+.result-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.result-summary-quiz {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Percentage ring */
+.result-ring {
+  --ring-color: var(--color-primary);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--ring-color) calc(var(--percent) * 1%),
+    var(--color-surface-2) 0
+  );
+}
+
+.result-ring::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+}
+
+.result-ring-value {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+}
+
+.tone-success .result-ring {
+  --ring-color: var(--color-success);
+}
+
+.tone-warning .result-ring {
+  --ring-color: var(--color-warning);
+}
+
+.tone-error .result-ring {
+  --ring-color: var(--color-error);
+}
+
+/* Grade text */
+.result-summary-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.result-summary-grade {
+  font-size: var(--fs-2xl);
+}
+
+.tone-success .result-summary-grade {
+  color: var(--color-success);
+}
+
+.tone-warning .result-summary-grade {
+  color: var(--color-warning);
+}
+
+.tone-error .result-summary-grade {
+  color: var(--color-error);
+}
+
+/* Stats */
+.result-stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--space-3);
+}
+
+.result-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-2);
+}
+
+.result-stat dt {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.result-stat dd {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+
+.result-stat.correct dd {
+  color: var(--color-success);
+}
+
+.result-stat.wrong dd {
+  color: var(--color-error);
+}
