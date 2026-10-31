@@ -8,6 +8,8 @@ import AnswerReview from '../components/AnswerReview'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { QUIZ_STATUS } from '../context/quizReducer'
 import { useQuiz } from '../hooks/useQuiz'
+import { useQuizHistory } from '../hooks/useQuizHistory'
+import { createHistoryEntry } from '../utils/historyUtils'
 import './Quiz.css'
 
 function Quiz() {
@@ -38,12 +40,31 @@ function Quiz() {
     resetQuiz,
   } = useQuiz()
 
+  const { addEntry } = useQuizHistory()
+
   useEffect(() => {
     startQuiz({ category: categoryId, difficulty: difficultyId })
   }, [categoryId, difficultyId, startQuiz])
 
   function handleRestart() {
     startQuiz({ category: categoryId, difficulty: difficultyId })
+  }
+
+  function handleNext() {
+    if (isLastQuestion && startedAt) {
+      addEntry(
+        createHistoryEntry({
+          category: categoryId,
+          difficulty: difficultyId,
+          score,
+          total: totalQuestions,
+          startedAt,
+          finishedAt: Date.now(),
+        }),
+      )
+    }
+
+    nextQuestion()
   }
 
   if (status === QUIZ_STATUS.IDLE) {
@@ -84,6 +105,9 @@ function Quiz() {
           <button type="button" className="btn btn-primary" onClick={handleRestart}>
             Try Again
           </button>
+          <Link to="/history" className="btn btn-outline" onClick={resetQuiz}>
+            View History
+          </Link>
           <Link to="/" className="btn btn-outline" onClick={resetQuiz}>
             Back to Home
           </Link>
@@ -131,7 +155,7 @@ function Quiz() {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={nextQuestion}
+          onClick={handleNext}
           disabled={currentAnswer === null}
         >
           {isLastQuestion ? 'Finish' : 'Next'}
