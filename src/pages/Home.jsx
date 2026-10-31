@@ -1,15 +1,21 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CategoryCard from '../components/CategoryCard'
 import DifficultySelector from '../components/DifficultySelector'
 import { CATEGORIES, DIFFICULTIES } from '../data/categories'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 import { countQuestions } from '../utils/questionUtils'
+import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Home.css'
+
+const VALID_DIFFICULTIES = ['all', ...DIFFICULTIES.map((item) => item.id)]
 
 function Home() {
   const navigate = useNavigate()
-  const [category, setCategory] = useState(null)
-  const [difficulty, setDifficulty] = useState('all')
+  const [storedCategory, setCategory] = useLocalStorage(STORAGE_KEYS.LAST_CATEGORY, null)
+  const [storedDifficulty, setDifficulty] = useLocalStorage(STORAGE_KEYS.LAST_DIFFICULTY, 'all')
+
+  const category = CATEGORIES.some((item) => item.id === storedCategory) ? storedCategory : null
+  const difficulty = VALID_DIFFICULTIES.includes(storedDifficulty) ? storedDifficulty : 'all'
 
   const countCategory = category ?? 'all'
   const difficultyCounts = Object.fromEntries([
