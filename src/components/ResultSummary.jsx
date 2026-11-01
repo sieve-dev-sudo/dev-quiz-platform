@@ -1,7 +1,17 @@
 import { formatDuration, getGrade, getPercent } from '../utils/resultUtils'
 import './ResultSummary.css'
 
-function ResultSummary({ title, difficultyName, score, total, startedAt, finishedAt }) {
+function ResultSummary({
+  title,
+  difficultyName,
+  score,
+  total,
+  startedAt,
+  finishedAt,
+  isNewBest = false,
+  previousBest = null,
+  bestScore = null,
+}) {
   const percent = getPercent(score, total)
   const grade = getGrade(percent)
   const wrong = total - score
@@ -26,6 +36,25 @@ function ResultSummary({ title, difficultyName, score, total, startedAt, finishe
         <h2 className="result-summary-grade">{grade.label}</h2>
         <p className="text-muted">{grade.message}</p>
       </div>
+
+      {isNewBest ? (
+        <div className="result-best new" role="status">
+          <span aria-hidden="true">🏆</span>
+          <span>
+            <strong>New personal best!</strong>
+            {previousBest && <> Previous best: {previousBest.percent}%</>}
+          </span>
+        </div>
+      ) : (
+        bestScore && (
+          <div className="result-best">
+            <span aria-hidden="true">⭐</span>
+            <span>
+              Your best: <strong>{bestScore.percent}%</strong> ({bestScore.score} / {bestScore.total})
+            </span>
+          </div>
+        )
+      )}
 
       <dl className="result-stats">
         <div className="result-stat">

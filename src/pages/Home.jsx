@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import CategoryCard from '../components/CategoryCard'
 import DifficultySelector from '../components/DifficultySelector'
 import { CATEGORIES, DIFFICULTIES } from '../data/categories'
+import { useBestScores } from '../hooks/useBestScores'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { countQuestions } from '../utils/questionUtils'
 import { STORAGE_KEYS } from '../utils/storageKeys'
@@ -13,6 +14,7 @@ function Home() {
   const navigate = useNavigate()
   const [storedCategory, setCategory] = useLocalStorage(STORAGE_KEYS.LAST_CATEGORY, null)
   const [storedDifficulty, setDifficulty] = useLocalStorage(STORAGE_KEYS.LAST_DIFFICULTY, 'all')
+  const { bestScores } = useBestScores()
 
   const category = CATEGORIES.some((item) => item.id === storedCategory) ? storedCategory : null
   const difficulty = VALID_DIFFICULTIES.includes(storedDifficulty) ? storedDifficulty : 'all'
@@ -46,6 +48,7 @@ function Home() {
               key={item.id}
               category={item}
               count={countQuestions(item.id, 'all')}
+              bestScore={bestScores[item.id]}
               isSelected={category === item.id}
               onSelect={setCategory}
             />
