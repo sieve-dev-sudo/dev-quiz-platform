@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import CategoryCard from '../components/CategoryCard'
 import DifficultySelector from '../components/DifficultySelector'
+import MistakesBanner from '../components/MistakesBanner'
 import { CATEGORIES, DIFFICULTIES } from '../data/categories'
 import { useBestScores } from '../hooks/useBestScores'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useMistakes } from '../hooks/useMistakes'
 import { countQuestions } from '../utils/questionUtils'
 import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Home.css'
@@ -15,6 +17,7 @@ function Home() {
   const [storedCategory, setCategory] = useLocalStorage(STORAGE_KEYS.LAST_CATEGORY, null)
   const [storedDifficulty, setDifficulty] = useLocalStorage(STORAGE_KEYS.LAST_DIFFICULTY, 'all')
   const { bestScores } = useBestScores()
+  const { mistakeList, countsByCategory } = useMistakes()
 
   const category = CATEGORIES.some((item) => item.id === storedCategory) ? storedCategory : null
   const difficulty = VALID_DIFFICULTIES.includes(storedDifficulty) ? storedDifficulty : 'all'
@@ -39,6 +42,8 @@ function Home() {
         <h1>Dev Quiz Platform</h1>
         <p className="text-muted">Test your coding knowledge, fully offline.</p>
       </div>
+
+      <MistakesBanner total={mistakeList.length} countsByCategory={countsByCategory} />
 
       <div className="home-section">
         <h2 className="home-section-title">1. Choose a topic</h2>

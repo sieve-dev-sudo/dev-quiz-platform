@@ -1,19 +1,24 @@
 import { useCallback, useMemo, useReducer } from 'react'
 import { QuizContext } from './QuizContext'
 import { ACTIONS, QUIZ_STATUS, initialState, quizReducer } from './quizReducer'
-import { filterQuestions } from '../utils/questionUtils'
+import { filterQuestions, getQuestionsByIds } from '../utils/questionUtils'
 
 function QuizProvider({ children }) {
   const [state, dispatch] = useReducer(quizReducer, initialState)
 
-  const startQuiz = useCallback(({ category = 'all', difficulty = 'all' } = {}) => {
-    const questions = filterQuestions({ category, difficulty })
+  const startQuiz = useCallback(
+    ({ category = 'all', difficulty = 'all', questionIds = null } = {}) => {
+      const questions = Array.isArray(questionIds)
+        ? getQuestionsByIds(questionIds)
+        : filterQuestions({ category, difficulty })
 
-    dispatch({
-      type: ACTIONS.START,
-      payload: { category, difficulty, questions, startedAt: Date.now() },
-    })
-  }, [])
+      dispatch({
+        type: ACTIONS.START,
+        payload: { category, difficulty, questions, startedAt: Date.now() },
+      })
+    },
+    [],
+  )
 
   const answerQuestion = useCallback((selectedIndex) => {
     dispatch({ type: ACTIONS.ANSWER, payload: { selectedIndex } })

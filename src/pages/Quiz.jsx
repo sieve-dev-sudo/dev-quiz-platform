@@ -8,21 +8,48 @@ import AnswerReview from '../components/AnswerReview'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { QUIZ_STATUS } from '../context/quizReducer'
 import { useBestScores } from '../hooks/useBestScores'
+import { useMistakes } from '../hooks/useMistakes'
 import { useQuiz } from '../hooks/useQuiz'
 import { useQuizHistory } from '../hooks/useQuizHistory'
 import { isBetterScore } from '../utils/bestScoreUtils'
 import { createHistoryEntry } from '../utils/historyUtils'
+import { getMistakeQuestionIds } from '../utils/mistakeUtils'
+import { readStorage } from '../utils/storage'
+import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Quiz.css'
+
+function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
+  if (!isMistakesMode) {
+    return { category: categoryId, difficulty: difficultyId }
+  }
+
+  const storedMistakes = readStorage(STORAGE_KEYS.MISTAKES, {})
+
+  return {
+    category: categoryId,
+    difficulty: 'all',
+    questionIds: getMistakeQuestionIds(storedMistakes, categoryId),
+  }
+}
+
+function getQuizTitle(isMistakesMode, category) {
+  if (isMistakesMode) {
+    return category ? `🔁 ${category.name} Mistakes Review` : '🔁 Mistakes Review'
+  }
+
+  return category ? `${category.icon} ${category.name} Quiz` : 'Quiz'
+}
 
 function Quiz() {
   const [searchParams] = useSearchParams()
+  const isMistakesMode = searchParams.get('mode') === 'mistakes'
   const categoryId = searchParams.get('category') || 'all'
-  const difficultyId = searchParams.get('difficulty') || 'all'
+  const difficultyId = isMistakesMode ? 'all' : searchParams.get('difficulty') || 'all'
 
   const category = getCategoryById(categoryId)
   const difficulty = getDifficultyById(difficultyId)
-  const title = category ? `${category.icon} ${category.name} Quiz` : 'Quiz'
-  const difficultyName = difficulty ? difficulty.name : 'All'
+  const title = getQuizTitle(isMistakesMode, category)
+  const difficultyName = isMistakesMode ? 'Mixed' : difficulty ? difficulty.name : 'All'
 
   const {
     status,
@@ -44,35 +71,40 @@ function Quiz() {
 
   const { addEntry } = useQuizHistory()
   const { bestScores, recordScore } = useBestScores()
+  const { recordMistakes } = useMistakes()
   const [bestRecord, setBestRecord] = useState(null)
 
   useEffect(() => {
-    startQuiz({ category: categoryId, difficulty: difficultyId })
-  }, [categoryId, difficultyId, startQuiz])
+    startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
+  }, [isMistakesMode, categoryId, difficultyId, startQuiz])
 
   function handleRestart() {
-    startQuiz({ category: categoryId, difficulty: difficultyId })
+    startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
   }
 
   function handleNext() {
     if (isLastQuestion && startedAt) {
-      const entry = createHistoryEntry({
-        category: categoryId,
-        difficulty: difficultyId,
-        score,
-        total: totalQuestions,
-        startedAt,
-        finishedAt: Date.now(),
-      })
+      recordMistakes(answers, questions)
 
-      addEntry(entry)
+      if (!isMistakesMode) {
+        const entry = createHistoryEntry({
+          category: categoryId,
+          difficulty: difficultyId,
+          score,
+          total: totalQuestions,
+          startedAt,
+          finishedAt: Date.now(),
+        })
 
-      if (category) {
-        const previousBest = bestScores[categoryId] ?? null
-        const isNewBest = isBetterScore(entry, previousBest)
+        addEntry(entry)
 
-        recordScore(entry)
-        setBestRecord({ startedAt, isNewBest, previousBest })
+        if (category) {
+          const previousBest = bestScores[categoryId] ?? null
+          const isNewBest = isBetterScore(entry, previousBest)
+
+          recordScore(entry)
+          setBestRecord({ startedAt, isNewBest, previousBest })
+        }
       }
     }
 
@@ -80,6 +112,9 @@ function Quiz() {
   }
 
   const currentBestRecord = bestRecord?.startedAt === startedAt ? bestRecord : null
+  const mistakesLink = category
+    ? `/quiz?mode=mistakes&category=${categoryId}`
+    : '/quiz?mode=mistakes'
 
   if (status === QUIZ_STATUS.IDLE) {
     return (
@@ -93,7 +128,11 @@ function Quiz() {
     return (
       <section className="card quiz-box">
         <h2>{title}</h2>
-        <p className="text-muted">No questions found for this selection.</p>
+        <p className="text-muted">
+          {isMistakesMode
+            ? 'No mistakes to review. Great job! 🎉'
+            : 'No questions found for this selection.'}
+        </p>
         <div className="quiz-actions">
           <Link to="/" className="btn btn-outline" onClick={resetQuiz}>
             Back to Home
@@ -104,6 +143,8 @@ function Quiz() {
   }
 
   if (status === QUIZ_STATUS.FINISHED) {
+    const hasWrongAnswers = score < totalQuestions
+
     return (
       <div className="quiz-result">
         <ResultSummary
@@ -115,13 +156,18 @@ function Quiz() {
           finishedAt={finishedAt}
           isNewBest={currentBestRecord?.isNewBest ?? false}
           previousBest={currentBestRecord?.previousBest ?? null}
-          bestScore={bestScores[categoryId] ?? null}
+          bestScore={isMistakesMode ? null : (bestScores[categoryId] ?? null)}
         />
 
         <div className="quiz-actions quiz-result-actions">
           <button type="button" className="btn btn-primary" onClick={handleRestart}>
             Try Again
           </button>
+          {hasWrongAnswers && !isMistakesMode && (
+            <Link to={mistakesLink} className="btn btn-outline">
+              Practice Mistakes
+            </Link>
+          )}
           <Link to="/history" className="btn btn-outline" onClick={resetQuiz}>
             View History
           </Link>

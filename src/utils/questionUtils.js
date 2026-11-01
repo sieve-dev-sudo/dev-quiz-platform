@@ -8,6 +8,10 @@ export function getQuestionById(id) {
   return questions.find((question) => question.id === id)
 }
 
+export function getQuestionsByIds(ids = []) {
+  return ids.map((id) => getQuestionById(id)).filter(Boolean)
+}
+
 export function filterQuestions({ category = 'all', difficulty = 'all' } = {}) {
   return questions.filter((question) => {
     const matchCategory = category === 'all' || question.category === category
