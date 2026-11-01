@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
 import QuestionCard from '../components/QuestionCard'
@@ -7,8 +7,10 @@ import ResultSummary from '../components/ResultSummary'
 import AnswerReview from '../components/AnswerReview'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { QUIZ_STATUS } from '../context/quizReducer'
+import { useBestScores } from '../hooks/useBestScores'
 import { useQuiz } from '../hooks/useQuiz'
 import { useQuizHistory } from '../hooks/useQuizHistory'
+import { isBetterScore } from '../utils/bestScoreUtils'
 import { createHistoryEntry } from '../utils/historyUtils'
 import './Quiz.css'
 
@@ -41,6 +43,8 @@ function Quiz() {
   } = useQuiz()
 
   const { addEntry } = useQuizHistory()
+  const { bestScores, recordScore } = useBestScores()
+  const [bestRecord, setBestRecord] = useState(null)
 
   useEffect(() => {
     startQuiz({ category: categoryId, difficulty: difficultyId })
@@ -52,20 +56,30 @@ function Quiz() {
 
   function handleNext() {
     if (isLastQuestion && startedAt) {
-      addEntry(
-        createHistoryEntry({
-          category: categoryId,
-          difficulty: difficultyId,
-          score,
-          total: totalQuestions,
-          startedAt,
-          finishedAt: Date.now(),
-        }),
-      )
+      const entry = createHistoryEntry({
+        category: categoryId,
+        difficulty: difficultyId,
+        score,
+        total: totalQuestions,
+        startedAt,
+        finishedAt: Date.now(),
+      })
+
+      addEntry(entry)
+
+      if (category) {
+        const previousBest = bestScores[categoryId] ?? null
+        const isNewBest = isBetterScore(entry, previousBest)
+
+        recordScore(entry)
+        setBestRecord({ startedAt, isNewBest, previousBest })
+      }
     }
 
     nextQuestion()
   }
+
+  const currentBestRecord = bestRecord?.startedAt === startedAt ? bestRecord : null
 
   if (status === QUIZ_STATUS.IDLE) {
     return (
@@ -99,6 +113,9 @@ function Quiz() {
           total={totalQuestions}
           startedAt={startedAt}
           finishedAt={finishedAt}
+          isNewBest={currentBestRecord?.isNewBest ?? false}
+          previousBest={currentBestRecord?.previousBest ?? null}
+          bestScore={bestScores[categoryId] ?? null}
         />
 
         <div className="quiz-actions quiz-result-actions">
