@@ -1,0 +1,80 @@
+.recent-scores {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recent-scores-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.recent-scores-header h2 {
+  font-size: var(--fs-lg);
+}
+
+.recent-scores-header span {
+  font-size: var(--fs-sm);
+}
+
+.recent-scores-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  height: 180px;
+  overflow-x: auto;
+}
+
+.recent-bar {
+  flex: 1;
+  min-width: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.recent-bar-value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.recent-bar-track {
+  flex: 1;
+  width: 100%;
+  max-width: 40px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-2);
+  overflow: hidden;
+}
+
+.recent-bar-fill {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  transition: height 0.4s ease;
+}
+
+.recent-bar-fill.tone-success {
+  background-color: var(--color-success);
+}
+
+.recent-bar-fill.tone-warning {
+  background-color: var(--color-warning);
+}
+
+.recent-bar-fill.tone-error {
+  background-color: var(--color-error);
+}
+
+.recent-bar-label {
+  font-size: var(--fs-sm);
+  line-height: 1;
+}
