@@ -7,7 +7,15 @@ const STATUS_ICONS = {
   wrong: '✗',
 }
 
-function OptionButton({ index, text, status = 'idle', isSelected, isDisabled, onSelect }) {
+function OptionButton({
+  index,
+  text,
+  status = 'idle',
+  isSelected,
+  isDisabled,
+  isCode = false,
+  onSelect,
+}) {
   const className = status === 'idle' ? 'option-button' : `option-button ${status}`
   const icon = STATUS_ICONS[status]
 
@@ -22,7 +30,7 @@ function OptionButton({ index, text, status = 'idle', isSelected, isDisabled, on
       <span className="option-letter" aria-hidden={icon ? 'true' : undefined}>
         {icon ?? LETTERS[index]}
       </span>
-      <span className="option-text">{text}</span>
+      <span className={isCode ? 'option-text code' : 'option-text'}>{text}</span>
     </button>
   )
 }
