@@ -1,6 +1,14 @@
 import './AnswerFeedback.css'
 
-function AnswerFeedback({ isCorrect, correctAnswer, explanation }) {
+function getFeedback(isCorrect, timedOut) {
+  if (isCorrect) return { icon: '✓', title: 'Correct!' }
+  if (timedOut) return { icon: '⏰', title: "Time's up!" }
+  return { icon: '✗', title: 'Not quite.' }
+}
+
+function AnswerFeedback({ isCorrect, timedOut = false, correctAnswer, explanation }) {
+  const feedback = getFeedback(isCorrect, timedOut)
+
   return (
     <div
       className={isCorrect ? 'answer-feedback correct' : 'answer-feedback wrong'}
@@ -8,8 +16,8 @@ function AnswerFeedback({ isCorrect, correctAnswer, explanation }) {
       aria-live="polite"
     >
       <p className="answer-feedback-title">
-        <span aria-hidden="true">{isCorrect ? '✓' : '✗'}</span>
-        {isCorrect ? 'Correct!' : 'Not quite.'}
+        <span aria-hidden="true">{feedback.icon}</span>
+        {feedback.title}
       </p>
 
       {!isCorrect && (
