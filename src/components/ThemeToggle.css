@@ -1,0 +1,31 @@
+.theme-toggle {
+  display: inline-flex;
+  padding: var(--space-1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-2);
+}
+
+.theme-option {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  font-size: var(--fs-sm);
+  line-height: 1;
+  opacity: 0.6;
+  transition: background-color var(--transition), opacity var(--transition),
+    box-shadow var(--transition);
+}
+
+.theme-option:hover {
+  opacity: 1;
+}
+
+.theme-option.selected {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  opacity: 1;
+}
