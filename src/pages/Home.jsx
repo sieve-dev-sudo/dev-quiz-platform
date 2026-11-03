@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import CategoryCard from '../components/CategoryCard'
 import DifficultySelector from '../components/DifficultySelector'
 import MistakesBanner from '../components/MistakesBanner'
+import QuizSettings from '../components/QuizSettings'
 import { CATEGORIES, DIFFICULTIES } from '../data/categories'
 import { useBestScores } from '../hooks/useBestScores'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useMistakes } from '../hooks/useMistakes'
+import { useSettings } from '../hooks/useSettings'
 import { countQuestions } from '../utils/questionUtils'
 import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Home.css'
@@ -18,6 +20,7 @@ function Home() {
   const [storedDifficulty, setDifficulty] = useLocalStorage(STORAGE_KEYS.LAST_DIFFICULTY, 'all')
   const { bestScores } = useBestScores()
   const { mistakeList, countsByCategory } = useMistakes()
+  const { settings, updateSettings } = useSettings()
 
   const category = CATEGORIES.some((item) => item.id === storedCategory) ? storedCategory : null
   const difficulty = VALID_DIFFICULTIES.includes(storedDifficulty) ? storedDifficulty : 'all'
@@ -68,6 +71,11 @@ function Home() {
           onChange={setDifficulty}
           counts={difficultyCounts}
         />
+      </div>
+
+      <div className="home-section">
+        <h2 className="home-section-title">3. Settings</h2>
+        <QuizSettings settings={settings} onChange={updateSettings} />
       </div>
 
       <div className="home-start">
