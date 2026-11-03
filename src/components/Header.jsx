@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle'
 import './Header.css'
 
 const navLinks = [
@@ -16,18 +17,22 @@ function Header() {
           <span>DevQuiz</span>
         </Link>
 
-        <nav className="header-nav" aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              className={({ isActive }) => (isActive ? 'header-link active' : 'header-link')}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="header-actions">
+          <nav className="header-nav" aria-label="Main navigation">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                className={({ isActive }) => (isActive ? 'header-link active' : 'header-link')}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )
