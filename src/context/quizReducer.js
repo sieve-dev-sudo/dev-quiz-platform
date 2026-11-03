@@ -48,6 +48,7 @@ export function quizReducer(state, action) {
       if (alreadyAnswered) return state
 
       const { selectedIndex } = action.payload
+      const timedOut = selectedIndex === null || selectedIndex === undefined
 
       return {
         ...state,
@@ -55,8 +56,9 @@ export function quizReducer(state, action) {
           ...state.answers,
           {
             questionId: question.id,
-            selectedIndex,
-            isCorrect: selectedIndex === question.answerIndex,
+            selectedIndex: timedOut ? null : selectedIndex,
+            isCorrect: !timedOut && selectedIndex === question.answerIndex,
+            timedOut,
           },
         ],
       }
