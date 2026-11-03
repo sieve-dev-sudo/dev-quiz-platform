@@ -1,0 +1,149 @@
+[
+  {
+    "id": "code-js-1",
+    "category": "javascript",
+    "difficulty": "easy",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "let x = 5;\nx += '5';\nconsole.log(x);",
+    "options": ["10", "55", "NaN", "TypeError"],
+    "answerIndex": 1,
+    "explanation": "When one side of + is a string, JavaScript converts the other side to a string and joins them, so 5 + '5' becomes '55'."
+  },
+  {
+    "id": "code-js-2",
+    "category": "javascript",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "const arr = [1, 2, 3];\nconst copy = arr;\ncopy.push(4);\nconsole.log(arr.length);",
+    "options": ["3", "4", "undefined", "Error"],
+    "answerIndex": 1,
+    "explanation": "Arrays are objects, so copy and arr point to the same array. Pushing to copy also changes arr."
+  },
+  {
+    "id": "code-js-3",
+    "category": "javascript",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "console.log([1, 2, 3].includes('2'));",
+    "options": ["true", "false", "undefined", "TypeError"],
+    "answerIndex": 1,
+    "explanation": "includes uses strict comparison without type conversion, so the string '2' does not match the number 2."
+  },
+  {
+    "id": "code-js-4",
+    "category": "javascript",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "console.log(a);\nvar a = 10;",
+    "options": ["10", "undefined", "ReferenceError", "null"],
+    "answerIndex": 1,
+    "explanation": "var declarations are hoisted but their values are not, so a exists but is undefined. With let it would throw a ReferenceError."
+  },
+  {
+    "id": "code-js-5",
+    "category": "javascript",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}",
+    "options": ["0 1 2", "3 3 3", "0 0 0", "2 2 2"],
+    "answerIndex": 1,
+    "explanation": "var is function scoped, so all callbacks share one i. When they run, the loop has finished and i is 3. Using let would log 0 1 2."
+  },
+  {
+    "id": "code-css-1",
+    "category": "css",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What is the total rendered width of .box?",
+    "language": "css",
+    "code": ".box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  box-sizing: content-box;\n}",
+    "options": ["200px", "240px", "250px", "210px"],
+    "answerIndex": 2,
+    "explanation": "With content-box, padding and border are added to the width: 200 + 20 × 2 + 5 × 2 = 250px."
+  },
+  {
+    "id": "code-css-2",
+    "category": "css",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "The HTML is <p id=\"intro\" class=\"text\">Hello</p>. What color is the text?",
+    "language": "css",
+    "code": "#intro {\n  color: blue;\n}\n\n.text {\n  color: red;\n}\n\np {\n  color: green;\n}",
+    "options": ["green", "red", "blue", "black"],
+    "answerIndex": 2,
+    "explanation": "The id selector has the highest specificity, so it wins even though it comes first. Source order only matters when specificity is equal."
+  },
+  {
+    "id": "code-react-1",
+    "category": "react",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "The button starts at 0. What does it show after one click?",
+    "language": "jsx",
+    "code": "function Counter() {\n  const [count, setCount] = useState(0);\n\n  function handleClick() {\n    setCount(count + 1);\n    setCount(count + 1);\n  }\n\n  return <button onClick={handleClick}>{count}</button>;\n}",
+    "options": ["0", "1", "2", "Error"],
+    "answerIndex": 1,
+    "explanation": "Both calls read the same count (0) from this render, so both set it to 1. Use setCount(c => c + 1) to get 2."
+  },
+  {
+    "id": "code-react-2",
+    "category": "react",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What happens when add() runs?",
+    "language": "jsx",
+    "code": "function List() {\n  const [items, setItems] = useState(['a']);\n\n  function add() {\n    items.push('b');\n    setItems(items);\n  }\n\n  return <p onClick={add}>{items.join(', ')}</p>;\n}",
+    "options": [
+      "It re-renders and shows a, b",
+      "It does not re-render because the array reference did not change",
+      "It throws an error",
+      "It re-renders twice"
+    ],
+    "answerIndex": 1,
+    "explanation": "React compares the new state with Object.is. Mutating the array and passing the same reference skips the render. Use setItems([...items, 'b']) instead."
+  },
+  {
+    "id": "code-html-1",
+    "category": "html",
+    "difficulty": "easy",
+    "type": "code",
+    "question": "What happens when the user clicks this button?",
+    "language": "html",
+    "code": "<form>\n  <button type=\"submit\" disabled>Send</button>\n</form>",
+    "options": [
+      "The form is submitted",
+      "Nothing happens",
+      "The page reloads",
+      "An error appears in the console"
+    ],
+    "answerIndex": 1,
+    "explanation": "A disabled button cannot be clicked or focused, so it never submits the form."
+  },
+  {
+    "id": "code-git-1",
+    "category": "git",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "In a repo with earlier commits, what does git status show for index.html after these commands?",
+    "language": "bash",
+    "code": "git add index.html\ngit commit -m \"add page\"\ngit reset --soft HEAD~1\ngit status",
+    "options": [
+      "Untracked file",
+      "Changes not staged for commit",
+      "Changes to be committed",
+      "Nothing to commit, working tree clean"
+    ],
+    "answerIndex": 2,
+    "explanation": "reset --soft moves HEAD back one commit but keeps the changes staged, so index.html shows under Changes to be committed."
+  }
+]
