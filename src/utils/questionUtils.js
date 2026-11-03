@@ -1,4 +1,7 @@
-import questions from '../data/questions.json'
+import baseQuestions from '../data/questions.json'
+import codeQuestions from '../data/codeQuestions.json'
+
+const questions = [...baseQuestions, ...codeQuestions]
 
 export function getAllQuestions() {
   return questions
@@ -26,4 +29,8 @@ export function countQuestions(category = 'all', difficulty = 'all') {
 
 export function isCorrectAnswer(question, selectedIndex) {
   return question.answerIndex === selectedIndex
+}
+
+export function isCodeQuestion(question) {
+  return Boolean(question?.code)
 }
