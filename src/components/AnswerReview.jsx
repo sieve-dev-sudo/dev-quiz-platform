@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { isCodeQuestion } from '../utils/questionUtils'
+import CodeBlock from './CodeBlock'
 import './AnswerReview.css'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -68,6 +70,10 @@ function AnswerReview({ questions, answers }) {
                 </div>
 
                 <p className="review-item-question">{question.question}</p>
+
+                {isCodeQuestion(question) && (
+                  <CodeBlock code={question.code} language={question.language} compact />
+                )}
 
                 <p className="review-item-line">
                   Your answer:{' '}
