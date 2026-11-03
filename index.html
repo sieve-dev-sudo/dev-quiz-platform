@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Dev Quiz Platform: test your coding knowledge offline." />
     <title>Dev Quiz Platform</title>
+    <script>
+      // Apply the saved theme before React loads to avoid a flash of the wrong theme
+      (function () {
+        try {
+          var theme = JSON.parse(localStorage.getItem('devquiz:theme'));
+          if (theme === 'light' || theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', theme);
+          }
+        } catch (error) {
+          // Ignore broken or missing theme value
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
