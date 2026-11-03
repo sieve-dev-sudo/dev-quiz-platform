@@ -2,15 +2,20 @@ import { useCallback, useMemo, useReducer } from 'react'
 import { QuizContext } from './QuizContext'
 import { ACTIONS, QUIZ_STATUS, initialState, quizReducer } from './quizReducer'
 import { filterQuestions, getQuestionsByIds } from '../utils/questionUtils'
+import { shuffleArray, shuffleQuestionOptions } from '../utils/shuffle'
 
 function QuizProvider({ children }) {
   const [state, dispatch] = useReducer(quizReducer, initialState)
 
   const startQuiz = useCallback(
-    ({ category = 'all', difficulty = 'all', questionIds = null } = {}) => {
-      const questions = Array.isArray(questionIds)
+    ({ category = 'all', difficulty = 'all', questionIds = null, shuffle = false } = {}) => {
+      const baseQuestions = Array.isArray(questionIds)
         ? getQuestionsByIds(questionIds)
         : filterQuestions({ category, difficulty })
+
+      const questions = shuffle
+        ? shuffleArray(baseQuestions).map(shuffleQuestionOptions)
+        : baseQuestions
 
       dispatch({
         type: ACTIONS.START,

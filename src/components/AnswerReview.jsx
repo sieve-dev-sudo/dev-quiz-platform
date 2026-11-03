@@ -3,6 +3,15 @@ import './AnswerReview.css'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 
+function getSelectedText(question, answer) {
+  if (!answer) return 'Not answered'
+  if (answer.selectedIndex === null || answer.selectedIndex === undefined) {
+    return answer.timedOut ? 'No answer (time ran out)' : 'Not answered'
+  }
+
+  return `${LETTERS[answer.selectedIndex]}. ${question.options[answer.selectedIndex]}`
+}
+
 function AnswerReview({ questions, answers }) {
   const wrongCount = answers.filter((answer) => !answer.isCorrect).length
   const [showWrongOnly, setShowWrongOnly] = useState(wrongCount > 0)
@@ -45,9 +54,7 @@ function AnswerReview({ questions, answers }) {
         <ol className="answer-review-list">
           {visibleItems.map(({ question, number, answer }) => {
             const isCorrect = answer?.isCorrect ?? false
-            const selectedText = answer
-              ? `${LETTERS[answer.selectedIndex]}. ${question.options[answer.selectedIndex]}`
-              : 'Not answered'
+            const selectedText = getSelectedText(question, answer)
             const correctText = `${LETTERS[question.answerIndex]}. ${question.options[question.answerIndex]}`
 
             return (
@@ -57,6 +64,7 @@ function AnswerReview({ questions, answers }) {
                   <span className={isCorrect ? 'badge badge-success' : 'badge badge-error'}>
                     {isCorrect ? 'Correct' : 'Wrong'}
                   </span>
+                  {answer?.timedOut && <span className="badge badge-warning">⏰ Time out</span>}
                 </div>
 
                 <p className="review-item-question">{question.question}</p>

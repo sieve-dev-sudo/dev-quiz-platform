@@ -4,5 +4,6 @@ export const STORAGE_KEYS = {
   HISTORY: 'history',
   BEST_SCORES: 'best-scores',
   MISTAKES: 'mistakes',
+  SETTINGS: 'settings',
   THEME: 'theme',
 }

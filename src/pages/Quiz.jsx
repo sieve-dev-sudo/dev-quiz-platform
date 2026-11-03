@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
+import QuestionTimer from '../components/QuestionTimer'
 import QuestionCard from '../components/QuestionCard'
 import AnswerFeedback from '../components/AnswerFeedback'
 import ResultSummary from '../components/ResultSummary'
@@ -11,16 +12,20 @@ import { useBestScores } from '../hooks/useBestScores'
 import { useMistakes } from '../hooks/useMistakes'
 import { useQuiz } from '../hooks/useQuiz'
 import { useQuizHistory } from '../hooks/useQuizHistory'
+import { useSettings } from '../hooks/useSettings'
 import { isBetterScore } from '../utils/bestScoreUtils'
 import { createHistoryEntry } from '../utils/historyUtils'
 import { getMistakeQuestionIds } from '../utils/mistakeUtils'
+import { DEFAULT_SETTINGS, normalizeSettings } from '../utils/settingsUtils'
 import { readStorage } from '../utils/storage'
 import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Quiz.css'
 
 function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
+  const { shuffle } = normalizeSettings(readStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS))
+
   if (!isMistakesMode) {
-    return { category: categoryId, difficulty: difficultyId }
+    return { category: categoryId, difficulty: difficultyId, shuffle }
   }
 
   const storedMistakes = readStorage(STORAGE_KEYS.MISTAKES, {})
@@ -29,6 +34,7 @@ function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
     category: categoryId,
     difficulty: 'all',
     questionIds: getMistakeQuestionIds(storedMistakes, categoryId),
+    shuffle,
   }
 }
 
@@ -72,6 +78,7 @@ function Quiz() {
   const { addEntry } = useQuizHistory()
   const { bestScores, recordScore } = useBestScores()
   const { recordMistakes } = useMistakes()
+  const { settings } = useSettings()
   const [bestRecord, setBestRecord] = useState(null)
 
   useEffect(() => {
@@ -80,6 +87,10 @@ function Quiz() {
 
   function handleRestart() {
     startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
+  }
+
+  function handleTimeUp() {
+    answerQuestion(null)
   }
 
   function handleNext() {
@@ -187,6 +198,8 @@ function Quiz() {
     return index === currentIndex ? 'current' : 'upcoming'
   })
 
+  const isAnswered = currentAnswer !== null
+
   return (
     <section className="card quiz-box">
       <ProgressBar
@@ -196,16 +209,27 @@ function Quiz() {
         steps={steps}
       />
 
+      {settings.timerSeconds > 0 && (
+        <QuestionTimer
+          key={currentQuestion.id}
+          seconds={settings.timerSeconds}
+          isRunning={!isAnswered}
+          onExpire={handleTimeUp}
+        />
+      )}
+
       <QuestionCard
         key={currentQuestion.id}
         question={currentQuestion}
         selectedIndex={currentAnswer ? currentAnswer.selectedIndex : null}
+        isAnswered={isAnswered}
         onSelect={answerQuestion}
       />
 
       {currentAnswer && (
         <AnswerFeedback
           isCorrect={currentAnswer.isCorrect}
+          timedOut={currentAnswer.timedOut}
           correctAnswer={currentQuestion.options[currentQuestion.answerIndex]}
           explanation={currentQuestion.explanation}
         />
@@ -219,7 +243,7 @@ function Quiz() {
           type="button"
           className="btn btn-primary"
           onClick={handleNext}
-          disabled={currentAnswer === null}
+          disabled={!isAnswered}
         >
           {isLastQuestion ? 'Finish' : 'Next'}
         </button>
