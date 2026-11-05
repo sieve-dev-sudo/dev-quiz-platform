@@ -26,6 +26,7 @@ function OptionButton({
       onClick={() => onSelect(index)}
       disabled={isDisabled}
       aria-pressed={isSelected}
+      aria-keyshortcuts={`${index + 1} ${LETTERS[index]}`}
     >
       <span className="option-letter" aria-hidden={icon ? 'true' : undefined}>
         {icon ?? LETTERS[index]}
