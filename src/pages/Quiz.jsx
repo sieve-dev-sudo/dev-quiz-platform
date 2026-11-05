@@ -4,6 +4,7 @@ import ProgressBar from '../components/ProgressBar'
 import QuestionTimer from '../components/QuestionTimer'
 import QuestionCard from '../components/QuestionCard'
 import AnswerFeedback from '../components/AnswerFeedback'
+import KeyboardHint from '../components/KeyboardHint'
 import ResultSummary from '../components/ResultSummary'
 import AnswerReview from '../components/AnswerReview'
 import { getCategoryById, getDifficultyById } from '../data/categories'
@@ -12,6 +13,7 @@ import { useBestScores } from '../hooks/useBestScores'
 import { useMistakes } from '../hooks/useMistakes'
 import { useQuiz } from '../hooks/useQuiz'
 import { useQuizHistory } from '../hooks/useQuizHistory'
+import { useQuizShortcuts } from '../hooks/useQuizShortcuts'
 import { useSettings } from '../hooks/useSettings'
 import { isBetterScore } from '../utils/bestScoreUtils'
 import { createHistoryEntry } from '../utils/historyUtils'
@@ -81,6 +83,8 @@ function Quiz() {
   const { settings } = useSettings()
   const [bestRecord, setBestRecord] = useState(null)
 
+  const isAnswered = currentAnswer !== null
+
   useEffect(() => {
     startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
   }, [isMistakesMode, categoryId, difficultyId, startQuiz])
@@ -121,6 +125,14 @@ function Quiz() {
 
     nextQuestion()
   }
+
+  useQuizShortcuts({
+    enabled: status === QUIZ_STATUS.ACTIVE && currentQuestion !== null,
+    optionCount: currentQuestion?.options.length ?? 0,
+    isAnswered,
+    onSelect: answerQuestion,
+    onNext: handleNext,
+  })
 
   const currentBestRecord = bestRecord?.startedAt === startedAt ? bestRecord : null
   const mistakesLink = category
@@ -198,8 +210,6 @@ function Quiz() {
     return index === currentIndex ? 'current' : 'upcoming'
   })
 
-  const isAnswered = currentAnswer !== null
-
   return (
     <section className="card quiz-box">
       <ProgressBar
@@ -244,10 +254,13 @@ function Quiz() {
           className="btn btn-primary"
           onClick={handleNext}
           disabled={!isAnswered}
+          aria-keyshortcuts="Enter"
         >
           {isLastQuestion ? 'Finish' : 'Next'}
         </button>
       </div>
+
+      <KeyboardHint optionCount={currentQuestion.options.length} />
     </section>
   )
 }
