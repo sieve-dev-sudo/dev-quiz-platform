@@ -1,0 +1,34 @@
+.keyboard-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.keyboard-hint kbd {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 1px var(--space-1);
+  border: 1px solid var(--color-border);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-align: center;
+  background-color: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.keyboard-hint-separator {
+  opacity: 0.5;
+}
+
+/* Hide on touch devices without a physical keyboard */
+@media (hover: none) {
+  .keyboard-hint {
+    display: none;
+  }
+}
