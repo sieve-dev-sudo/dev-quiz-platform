@@ -37,3 +37,24 @@
 .quiz-live-score strong {
   color: var(--color-text);
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+  .quiz-box,
+  .quiz-result {
+    gap: var(--space-4);
+  }
+
+  .quiz-actions > .btn {
+    flex: 1 1 auto;
+  }
+
+  .quiz-result-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quiz-result-actions > .btn {
+    width: 100%;
+  }
+}
