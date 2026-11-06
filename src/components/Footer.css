@@ -18,3 +18,12 @@
   font-weight: 600;
   color: var(--color-primary);
 }
+
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-1);
+    text-align: center;
+  }
+}
