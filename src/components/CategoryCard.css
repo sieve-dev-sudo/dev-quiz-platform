@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-2);
+  min-width: 0;
   padding: var(--space-5);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -68,4 +69,37 @@
   font-family: var(--font-sans);
   font-weight: 500;
   color: var(--color-text-muted);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .category-card {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+  }
+
+  .category-card:hover {
+    transform: none;
+  }
+
+  .category-card-icon {
+    font-size: 1.5rem;
+  }
+
+  .category-card-name {
+    font-size: var(--fs-base);
+  }
+}
+
+/* Small phones: hide description to keep cards compact */
+@media (max-width: 480px) {
+  .category-card-desc {
+    display: none;
+  }
+
+  .category-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
 }

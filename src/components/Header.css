@@ -70,3 +70,33 @@
   color: var(--color-primary);
   background-color: var(--color-primary-soft);
 }
+
+/* Mobile: logo and theme toggle on top, nav tabs full width below */
+@media (max-width: 600px) {
+  .header-inner {
+    min-height: auto;
+    row-gap: var(--space-2);
+  }
+
+  .header-actions {
+    display: contents;
+  }
+
+  .header-nav {
+    order: 3;
+    width: 100%;
+    padding: var(--space-1);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-2);
+  }
+
+  .header-link {
+    flex: 1;
+    text-align: center;
+  }
+
+  .header-link.active {
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+  }
+}

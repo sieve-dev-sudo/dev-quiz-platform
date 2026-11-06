@@ -84,10 +84,6 @@
   font-size: var(--fs-sm);
 }
 
-.highlight-action:hover {
-  text-decoration: none;
-}
-
 /* Empty state */
 .stats-empty {
   width: 100%;
@@ -111,4 +107,36 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-2);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .stats {
+    gap: var(--space-4);
+  }
+
+  .stats-title {
+    font-size: var(--fs-xl);
+  }
+
+  .stats-header .stats-reset {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+
+  .stats-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-action {
+    align-self: stretch;
+  }
+
+  .stats-empty {
+    padding: var(--space-6) var(--space-4);
+  }
 }

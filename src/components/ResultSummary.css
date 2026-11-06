@@ -15,11 +15,13 @@
 /* Percentage ring */
 .result-ring {
   --ring-color: var(--color-primary);
+  --ring-size: 140px;
+  --ring-width: 12px;
   position: relative;
   display: grid;
   place-items: center;
-  width: 140px;
-  height: 140px;
+  width: var(--ring-size);
+  height: var(--ring-size);
   border-radius: 50%;
   background: conic-gradient(
     var(--ring-color) calc(var(--percent) * 1%),
@@ -30,7 +32,7 @@
 .result-ring::before {
   content: '';
   position: absolute;
-  inset: 12px;
+  inset: var(--ring-width);
   border-radius: 50%;
   background-color: var(--color-surface);
 }
@@ -140,4 +142,37 @@
 
 .result-stat.wrong dd {
   color: var(--color-error);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .result-summary {
+    gap: var(--space-4);
+  }
+
+  .result-ring {
+    --ring-size: 112px;
+    --ring-width: 10px;
+  }
+
+  .result-ring-value {
+    font-size: var(--fs-xl);
+  }
+
+  .result-summary-grade {
+    font-size: var(--fs-xl);
+  }
+
+  .result-best {
+    border-radius: var(--radius-md);
+  }
+
+  .result-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+
+  .result-stat dd {
+    font-size: var(--fs-lg);
+  }
 }
