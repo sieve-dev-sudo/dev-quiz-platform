@@ -1,0 +1,91 @@
+[
+  {
+    "id": "react-7",
+    "category": "react",
+    "difficulty": "easy",
+    "question": "How do you pass data from a parent component to a child component?",
+    "options": ["With props", "With state only", "With CSS classes", "With localStorage"],
+    "answerIndex": 0,
+    "explanation": "Props are inputs passed from parent to child, like <Card title=\"Hello\" />."
+  },
+  {
+    "id": "react-8",
+    "category": "react",
+    "difficulty": "easy",
+    "question": "Which attribute do you use for CSS classes in JSX?",
+    "options": ["class", "className", "cssClass", "styleName"],
+    "answerIndex": 1,
+    "explanation": "class is a reserved word in JavaScript, so JSX uses className."
+  },
+  {
+    "id": "react-9",
+    "category": "react",
+    "difficulty": "easy",
+    "question": "What must a React component name start with?",
+    "options": ["A lowercase letter", "An uppercase letter", "An underscore", "The word use"],
+    "answerIndex": 1,
+    "explanation": "React treats lowercase tags as HTML elements. Components must start with an uppercase letter, like <Header />."
+  },
+  {
+    "id": "react-10",
+    "category": "react",
+    "difficulty": "medium",
+    "question": "Where are you allowed to call hooks like useState?",
+    "options": [
+      "Only at the top level of a component or custom hook",
+      "Inside loops and conditions",
+      "Only inside class components",
+      "Only inside event handlers"
+    ],
+    "answerIndex": 0,
+    "explanation": "Hooks must be called in the same order on every render, so never call them inside loops, conditions or nested functions."
+  },
+  {
+    "id": "react-11",
+    "category": "react",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What does App render the first time?",
+    "language": "jsx",
+    "code": "function App() {\n  const [show, setShow] = useState(false);\n\n  return <div>{show && <p>Hello</p>}</div>;\n}",
+    "options": [
+      "<div><p>Hello</p></div>",
+      "An empty <div>",
+      "<div>false</div>",
+      "An error"
+    ],
+    "answerIndex": 1,
+    "explanation": "show is false, so the && expression returns false. React renders nothing for false, leaving an empty div."
+  },
+  {
+    "id": "react-12",
+    "category": "react",
+    "difficulty": "hard",
+    "question": "What does useRef return?",
+    "options": [
+      "A state value that re-renders when it changes",
+      "A mutable object with a current property that persists without causing re-renders",
+      "A memoized function",
+      "A context value"
+    ],
+    "answerIndex": 1,
+    "explanation": "useRef keeps a value between renders. Changing ref.current does not trigger a re-render. It is often used for DOM elements."
+  },
+  {
+    "id": "react-13",
+    "category": "react",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What is the purpose of the function returned inside useEffect?",
+    "language": "jsx",
+    "code": "useEffect(() => {\n  const id = setInterval(tick, 1000);\n  return () => clearInterval(id);\n}, []);",
+    "options": [
+      "It runs before every render",
+      "It cleans up the interval when the component unmounts",
+      "It starts the interval again",
+      "It is ignored by React"
+    ],
+    "answerIndex": 1,
+    "explanation": "The returned cleanup function runs on unmount (and before the effect runs again), preventing memory leaks."
+  }
+]
