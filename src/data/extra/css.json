@@ -1,0 +1,238 @@
+[
+  {
+    "id": "css-7",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which property changes the background color of an element?",
+    "options": ["color", "bg-color", "background-color", "fill"],
+    "answerIndex": 2,
+    "explanation": "background-color sets the background. color only changes the text color."
+  },
+  {
+    "id": "css-8",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which property sets the size of text?",
+    "options": ["font-size", "text-size", "font-weight", "size"],
+    "answerIndex": 0,
+    "explanation": "font-size controls how big the text is, for example font-size: 18px."
+  },
+  {
+    "id": "css-9",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "How do you select all elements with class=\"card\"?",
+    "options": ["#card", "card", ".card", "*card"],
+    "answerIndex": 2,
+    "explanation": "A dot selects by class. A hash (#) selects by id, and a plain name selects by tag."
+  },
+  {
+    "id": "css-10",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which property adds space inside an element, between its content and its border?",
+    "options": ["margin", "padding", "gap", "spacing"],
+    "answerIndex": 1,
+    "explanation": "padding is the inner space. margin is the outer space around the border."
+  },
+  {
+    "id": "css-11",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which property makes text bold?",
+    "options": ["font-style", "font-weight", "text-decoration", "font-bold"],
+    "answerIndex": 1,
+    "explanation": "font-weight: bold (or 700) makes text bold. font-style is for italic."
+  },
+  {
+    "id": "css-12",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "How do you write a comment in CSS?",
+    "options": ["// comment", "<!-- comment -->", "/* comment */", "# comment"],
+    "answerIndex": 2,
+    "explanation": "CSS only supports /* comment */. The other styles belong to JavaScript, HTML or other languages."
+  },
+  {
+    "id": "css-13",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which value hides an element and removes the space it takes?",
+    "options": ["display: hidden", "display: none", "visibility: hidden", "opacity: 0"],
+    "answerIndex": 1,
+    "explanation": "display: none removes the element from the layout. visibility: hidden and opacity: 0 hide it but keep its space."
+  },
+  {
+    "id": "css-14",
+    "category": "css",
+    "difficulty": "easy",
+    "question": "Which property centers text horizontally inside its block?",
+    "options": ["align", "text-align", "vertical-align", "justify-items"],
+    "answerIndex": 1,
+    "explanation": "text-align: center centers inline content such as text inside a block element."
+  },
+  {
+    "id": "css-15",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "What does the gap property do in Flexbox and Grid?",
+    "options": [
+      "Adds space between items",
+      "Adds space outside the container",
+      "Adds space inside each item",
+      "Removes borders between items"
+    ],
+    "answerIndex": 0,
+    "explanation": "gap sets the space between flex or grid items without adding margins to each item."
+  },
+  {
+    "id": "css-16",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "Which unit is relative to the root (html) font size?",
+    "options": ["em", "rem", "px", "%"],
+    "answerIndex": 1,
+    "explanation": "rem means root em. 1rem equals the font size of the html element, usually 16px."
+  },
+  {
+    "id": "css-17",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "Which pseudo-class styles an element when the mouse is over it?",
+    "options": [":focus", ":active", ":hover", ":visited"],
+    "answerIndex": 2,
+    "explanation": ":hover applies while the pointer is over the element. :focus applies when it has keyboard focus."
+  },
+  {
+    "id": "css-18",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "Which position value keeps an element in the same place on the screen while scrolling?",
+    "options": ["absolute", "relative", "fixed", "static"],
+    "answerIndex": 2,
+    "explanation": "position: fixed places the element relative to the viewport, so it does not move when the page scrolls."
+  },
+  {
+    "id": "css-19",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "What does flex-direction: column do?",
+    "options": [
+      "Places items side by side",
+      "Stacks items vertically",
+      "Reverses the item order",
+      "Wraps items onto new lines"
+    ],
+    "answerIndex": 1,
+    "explanation": "column makes the main axis vertical, so flex items stack from top to bottom."
+  },
+  {
+    "id": "css-20",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "Which property controls which positioned element appears on top?",
+    "options": ["z-index", "order", "stack", "layer"],
+    "answerIndex": 0,
+    "explanation": "z-index sets the stacking order of positioned elements. Higher values appear in front."
+  },
+  {
+    "id": "css-21",
+    "category": "css",
+    "difficulty": "medium",
+    "question": "What does 1fr mean in CSS Grid?",
+    "options": [
+      "One fixed pixel",
+      "One fraction of the free space",
+      "One root font size",
+      "One frame of animation"
+    ],
+    "answerIndex": 1,
+    "explanation": "fr is a fraction unit. grid-template-columns: 1fr 2fr gives the second column twice the free space."
+  },
+  {
+    "id": "css-22",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "Which rule applies styles only on screens 600px wide or smaller?",
+    "options": [
+      "@media (min-width: 600px)",
+      "@media (max-width: 600px)",
+      "@screen (600px)",
+      "@media (width: 600px)"
+    ],
+    "answerIndex": 1,
+    "explanation": "max-width: 600px matches viewports up to 600px. min-width matches 600px and wider."
+  },
+  {
+    "id": "css-23",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "An element with position: absolute is placed relative to what?",
+    "options": [
+      "Always the viewport",
+      "Its nearest positioned ancestor",
+      "Its previous sibling",
+      "Always the body element"
+    ],
+    "answerIndex": 1,
+    "explanation": "It uses the nearest ancestor with a position other than static. If there is none, it uses the initial containing block."
+  },
+  {
+    "id": "css-24",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "Which selector matches a <p> that comes immediately after an <h2>?",
+    "options": ["h2 p", "h2 > p", "h2 + p", "h2 ~ p"],
+    "answerIndex": 2,
+    "explanation": "+ is the adjacent sibling combinator. ~ matches any following sibling, > matches direct children."
+  },
+  {
+    "id": "css-25",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "The html font size is 16px and a parent has font-size: 20px. How big is font-size: 2em on its child?",
+    "options": ["32px", "40px", "20px", "36px"],
+    "answerIndex": 1,
+    "explanation": "For font-size, em is relative to the parent font size: 2 × 20px = 40px. 2rem would be 32px."
+  },
+  {
+    "id": "css-26",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "What are values like --primary: #4f46e5 called in plain CSS?",
+    "options": ["Sass variables", "Custom properties", "Mixins", "Constants"],
+    "answerIndex": 1,
+    "explanation": "They are custom properties (CSS variables). You read them with var(--primary), and they can change at runtime."
+  },
+  {
+    "id": "css-27",
+    "category": "css",
+    "difficulty": "hard",
+    "question": "What does the :not() pseudo-class do?",
+    "options": [
+      "Selects elements that do not match the given selector",
+      "Removes an element from the page",
+      "Reverses a property value",
+      "Disables a CSS rule"
+    ],
+    "answerIndex": 0,
+    "explanation": "For example, button:not(:disabled) matches every button that is not disabled."
+  },
+  {
+    "id": "css-28",
+    "category": "css",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "Three .child elements are inside .parent. How is the free width shared?",
+    "language": "css",
+    "code": ".parent {\n  display: flex;\n}\n\n.child {\n  flex: 1;\n}",
+    "options": [
+      "Each child gets an equal share of the free space",
+      "The first child takes all the space",
+      "Children keep only their content width",
+      "Children stack vertically"
+    ],
+    "answerIndex": 0,
+    "explanation": "flex: 1 sets flex-grow to 1 on every child, so the free space is split equally between them."
+  }
+]
