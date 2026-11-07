@@ -1,0 +1,89 @@
+[
+  {
+    "id": "git-7",
+    "category": "git",
+    "difficulty": "easy",
+    "question": "Which command copies a remote repository to your computer?",
+    "options": ["git copy", "git clone", "git pull", "git fork"],
+    "answerIndex": 1,
+    "explanation": "git clone <url> downloads the whole repository, including its history."
+  },
+  {
+    "id": "git-8",
+    "category": "git",
+    "difficulty": "easy",
+    "question": "Which command saves staged changes with a message?",
+    "options": ["git save -m", "git commit -m", "git push -m", "git add -m"],
+    "answerIndex": 1,
+    "explanation": "git commit -m \"message\" records the staged changes as a new commit."
+  },
+  {
+    "id": "git-9",
+    "category": "git",
+    "difficulty": "easy",
+    "question": "Which command uploads local commits to the remote repository?",
+    "options": ["git push", "git pull", "git fetch", "git upload"],
+    "answerIndex": 0,
+    "explanation": "git push sends your local commits to the remote, such as GitHub."
+  },
+  {
+    "id": "git-10",
+    "category": "git",
+    "difficulty": "medium",
+    "question": "What does git fetch do?",
+    "options": [
+      "Downloads remote changes without merging them",
+      "Downloads and merges remote changes",
+      "Deletes remote branches",
+      "Uploads local commits"
+    ],
+    "answerIndex": 0,
+    "explanation": "git fetch only updates your remote tracking branches. git pull is fetch plus merge."
+  },
+  {
+    "id": "git-11",
+    "category": "git",
+    "difficulty": "medium",
+    "question": "Which file tells Git which files to ignore?",
+    "options": [".gitconfig", ".gitignore", ".gitkeep", ".gitattributes"],
+    "answerIndex": 1,
+    "explanation": ".gitignore lists files and folders, like node_modules and dist, that Git should not track."
+  },
+  {
+    "id": "git-12",
+    "category": "git",
+    "difficulty": "medium",
+    "question": "Which command shows the commit history with one line per commit?",
+    "options": ["git log --oneline", "git history", "git status --short", "git show --all"],
+    "answerIndex": 0,
+    "explanation": "git log --oneline shows each commit as a short hash and its message."
+  },
+  {
+    "id": "git-13",
+    "category": "git",
+    "difficulty": "hard",
+    "question": "What does git stash do?",
+    "options": [
+      "Deletes uncommitted changes forever",
+      "Saves uncommitted changes for later and cleans the working directory",
+      "Creates a new branch",
+      "Pushes changes to a hidden remote"
+    ],
+    "answerIndex": 1,
+    "explanation": "git stash puts your changes aside. Use git stash pop to bring them back."
+  },
+  {
+    "id": "git-14",
+    "category": "git",
+    "difficulty": "hard",
+    "question": "What is the main difference between git merge and git rebase?",
+    "options": [
+      "Merge adds a merge commit, rebase replays commits on top of another branch for a linear history",
+      "Rebase deletes the other branch",
+      "Merge only works with remote branches",
+      "There is no difference"
+    ],
+    "answerIndex": 0,
+    "explanation": "Merge keeps the branch history and joins it with a merge commit. Rebase rewrites commits so history looks like a straight line."
+  }
+]

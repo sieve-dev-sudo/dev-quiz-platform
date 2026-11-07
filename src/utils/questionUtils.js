@@ -1,8 +1,20 @@
 import baseQuestions from '../data/questions.json'
 import codeQuestions from '../data/codeQuestions.json'
 import htmlQuestions from '../data/extra/html.json'
+import cssQuestions from '../data/extra/css.json'
+import javascriptQuestions from '../data/extra/javascript.json'
+import reactQuestions from '../data/extra/react.json'
+import gitQuestions from '../data/extra/git.json'
 
-const questions = [...baseQuestions, ...codeQuestions, ...htmlQuestions]
+const questions = [
+  ...baseQuestions,
+  ...codeQuestions,
+  ...htmlQuestions,
+  ...cssQuestions,
+  ...javascriptQuestions,
+  ...reactQuestions,
+  ...gitQuestions,
+]
 
 export function getAllQuestions() {
   return questions

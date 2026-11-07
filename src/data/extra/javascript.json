@@ -1,0 +1,222 @@
+[
+  {
+    "id": "javascript-7",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "Which method adds an item to the end of an array?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answerIndex": 0,
+    "explanation": "push() adds to the end. pop() removes from the end, unshift() adds to the start, shift() removes from the start."
+  },
+  {
+    "id": "javascript-8",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "How do you write a single-line comment in JavaScript?",
+    "options": ["<!-- comment -->", "// comment", "# comment", "** comment"],
+    "answerIndex": 1,
+    "explanation": "// starts a single-line comment. /* */ is used for multi-line comments."
+  },
+  {
+    "id": "javascript-9",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "What does typeof 'hello' return?",
+    "options": ["\"text\"", "\"string\"", "\"char\"", "\"object\""],
+    "answerIndex": 1,
+    "explanation": "Text values are strings in JavaScript, so typeof returns \"string\"."
+  },
+  {
+    "id": "javascript-10",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "Which method turns a JSON string into a JavaScript object?",
+    "options": ["JSON.stringify()", "JSON.parse()", "JSON.object()", "JSON.convert()"],
+    "answerIndex": 1,
+    "explanation": "JSON.parse() reads a JSON string into a value. JSON.stringify() does the opposite."
+  },
+  {
+    "id": "javascript-11",
+    "category": "javascript",
+    "difficulty": "easy",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "console.log(10 % 3);",
+    "options": ["3", "1", "0", "3.33"],
+    "answerIndex": 1,
+    "explanation": "% is the remainder operator. 10 divided by 3 is 3 with a remainder of 1."
+  },
+  {
+    "id": "javascript-12",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "Which keyword declares a block-scoped variable that can be reassigned?",
+    "options": ["const", "let", "var", "static"],
+    "answerIndex": 1,
+    "explanation": "let is block scoped and can be reassigned. const cannot be reassigned, and var is function scoped."
+  },
+  {
+    "id": "javascript-13",
+    "category": "javascript",
+    "difficulty": "easy",
+    "question": "What does Array.isArray([]) return?",
+    "options": ["true", "false", "\"array\"", "undefined"],
+    "answerIndex": 0,
+    "explanation": "Array.isArray() returns true for arrays. It is more reliable than typeof, which returns \"object\" for arrays."
+  },
+  {
+    "id": "javascript-14",
+    "category": "javascript",
+    "difficulty": "medium",
+    "question": "What does the filter() method return?",
+    "options": [
+      "The first matching item",
+      "A new array with the items that pass the test",
+      "true or false",
+      "The index of the matching item"
+    ],
+    "answerIndex": 1,
+    "explanation": "filter() returns a new array. find() returns the first match, and some() returns true or false."
+  },
+  {
+    "id": "javascript-15",
+    "category": "javascript",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "const name = null ?? 'Guest';\nconsole.log(name);",
+    "options": ["null", "Guest", "undefined", "false"],
+    "answerIndex": 1,
+    "explanation": "?? returns the right side when the left side is null or undefined."
+  },
+  {
+    "id": "javascript-16",
+    "category": "javascript",
+    "difficulty": "medium",
+    "question": "Which statement about arrow functions is true?",
+    "options": [
+      "They have their own this",
+      "They use this from the surrounding scope",
+      "They can be called with new",
+      "They always need a return statement"
+    ],
+    "answerIndex": 1,
+    "explanation": "Arrow functions do not create their own this. They also cannot be used as constructors."
+  },
+  {
+    "id": "javascript-17",
+    "category": "javascript",
+    "difficulty": "medium",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "const { a, b = 5 } = { a: 1 };\nconsole.log(a + b);",
+    "options": ["1", "6", "NaN", "undefined"],
+    "answerIndex": 1,
+    "explanation": "Destructuring gives a = 1. b is missing in the object, so it uses its default value 5. 1 + 5 = 6."
+  },
+  {
+    "id": "javascript-18",
+    "category": "javascript",
+    "difficulty": "medium",
+    "question": "What happens with Promise.all() when one of the promises rejects?",
+    "options": [
+      "It ignores that promise and continues",
+      "It rejects right away with that error",
+      "It returns only the successful results",
+      "It retries the failed promise"
+    ],
+    "answerIndex": 1,
+    "explanation": "Promise.all() fails fast. Use Promise.allSettled() when you want every result, success or failure."
+  },
+  {
+    "id": "javascript-19",
+    "category": "javascript",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "console.log(typeof NaN);",
+    "options": ["NaN", "undefined", "number", "object"],
+    "answerIndex": 2,
+    "explanation": "NaN means Not a Number, but its type is still \"number\" because it is a special numeric value."
+  },
+  {
+    "id": "javascript-20",
+    "category": "javascript",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "const a = [1, 2, 3];\nconst b = [...a];\nb.push(4);\nconsole.log(a.length);",
+    "options": ["3", "4", "undefined", "Error"],
+    "answerIndex": 0,
+    "explanation": "The spread operator creates a new array, so pushing to b does not change a."
+  },
+  {
+    "id": "javascript-21",
+    "category": "javascript",
+    "difficulty": "hard",
+    "question": "What is a closure?",
+    "options": [
+      "A function that keeps access to variables from its outer scope after that scope has finished",
+      "A method that closes the browser tab",
+      "A loop that never ends",
+      "An object with no properties"
+    ],
+    "answerIndex": 0,
+    "explanation": "Closures let inner functions remember outer variables. They are used for counters, private data and callbacks."
+  },
+  {
+    "id": "javascript-22",
+    "category": "javascript",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "console.log(0 || 'A');\nconsole.log(0 ?? 'B');",
+    "options": ["A then B", "A then 0", "0 then B", "0 then 0"],
+    "answerIndex": 1,
+    "explanation": "|| skips any falsy value, so it returns 'A'. ?? only skips null and undefined, so it keeps 0."
+  },
+  {
+    "id": "javascript-23",
+    "category": "javascript",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "In what order are the numbers logged?",
+    "language": "js",
+    "code": "async function run() {\n  console.log(1);\n  await null;\n  console.log(2);\n}\n\nrun();\nconsole.log(3);",
+    "options": ["1 2 3", "1 3 2", "3 1 2", "2 1 3"],
+    "answerIndex": 1,
+    "explanation": "run() logs 1 right away. await pauses the rest as a microtask, so 3 is logged before 2."
+  },
+  {
+    "id": "javascript-24",
+    "category": "javascript",
+    "difficulty": "hard",
+    "question": "What does Object.freeze() do?",
+    "options": [
+      "Makes an object read-only at the top level",
+      "Deeply freezes every nested object",
+      "Deletes the object",
+      "Converts the object to JSON"
+    ],
+    "answerIndex": 0,
+    "explanation": "Object.freeze() is shallow. Nested objects can still be changed unless they are frozen too."
+  },
+  {
+    "id": "javascript-25",
+    "category": "javascript",
+    "difficulty": "hard",
+    "type": "code",
+    "question": "What does this code log?",
+    "language": "js",
+    "code": "const obj = {\n  name: 'Dev',\n  greet() {\n    return () => this.name;\n  },\n};\n\nconsole.log(obj.greet()());",
+    "options": ["Dev", "undefined", "TypeError", "An empty string"],
+    "answerIndex": 0,
+    "explanation": "The arrow function uses this from greet(), where this is obj. So it returns 'Dev'."
+  }
+]
