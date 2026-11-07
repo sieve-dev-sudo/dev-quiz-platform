@@ -24,10 +24,12 @@ import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Quiz.css'
 
 function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
-  const { shuffle } = normalizeSettings(readStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS))
+  const { shuffle, questionCount } = normalizeSettings(
+    readStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS),
+  )
 
   if (!isMistakesMode) {
-    return { category: categoryId, difficulty: difficultyId, shuffle }
+    return { category: categoryId, difficulty: difficultyId, shuffle, limit: questionCount }
   }
 
   const storedMistakes = readStorage(STORAGE_KEYS.MISTAKES, {})
@@ -221,7 +223,7 @@ function Quiz() {
 
       {settings.timerSeconds > 0 && (
         <QuestionTimer
-          key={currentQuestion.id}
+          key={`timer-${startedAt}-${currentQuestion.id}`}
           seconds={settings.timerSeconds}
           isRunning={!isAnswered}
           onExpire={handleTimeUp}
@@ -229,7 +231,7 @@ function Quiz() {
       )}
 
       <QuestionCard
-        key={currentQuestion.id}
+        key={`card-${startedAt}-${currentQuestion.id}`}
         question={currentQuestion}
         selectedIndex={currentAnswer ? currentAnswer.selectedIndex : null}
         isAnswered={isAnswered}
