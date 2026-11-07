@@ -1,0 +1,259 @@
+[
+  {
+    "id": "html-7",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which tag creates a hyperlink?",
+    "options": ["<link>", "<a>", "<href>", "<url>"],
+    "answerIndex": 1,
+    "explanation": "The <a> (anchor) tag creates a hyperlink. Its href attribute sets where the link goes."
+  },
+  {
+    "id": "html-8",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which tag inserts an image?",
+    "options": ["<img>", "<image>", "<pic>", "<src>"],
+    "answerIndex": 0,
+    "explanation": "<img> embeds an image. It needs a src attribute for the file and an alt attribute for accessibility."
+  },
+  {
+    "id": "html-9",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which tag creates a bulleted (unordered) list?",
+    "options": ["<ol>", "<li>", "<ul>", "<list>"],
+    "answerIndex": 2,
+    "explanation": "<ul> creates an unordered list with bullets. <ol> creates a numbered list, and <li> is each list item."
+  },
+  {
+    "id": "html-10",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which tag inserts a line break?",
+    "options": ["<lb>", "<br>", "<break>", "<newline>"],
+    "answerIndex": 1,
+    "explanation": "<br> is an empty element that moves the following content to a new line."
+  },
+  {
+    "id": "html-11",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Where is the text of the <title> element shown?",
+    "options": [
+      "In the browser tab",
+      "At the top of the page body",
+      "In the page footer",
+      "Inside every paragraph"
+    ],
+    "answerIndex": 0,
+    "explanation": "The <title> inside <head> appears in the browser tab and is also used by search engines and bookmarks."
+  },
+  {
+    "id": "html-12",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which attribute sets the destination URL of a link?",
+    "options": ["src", "link", "href", "url"],
+    "answerIndex": 2,
+    "explanation": "href (hypertext reference) holds the URL that an <a> tag points to."
+  },
+  {
+    "id": "html-13",
+    "category": "html",
+    "difficulty": "easy",
+    "question": "Which tag marks text as having strong importance?",
+    "options": ["<b>", "<strong>", "<em>", "<mark>"],
+    "answerIndex": 1,
+    "explanation": "<strong> adds meaning (strong importance) and is bold by default. <b> is only visual bold with no extra meaning."
+  },
+  {
+    "id": "html-14",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which attribute makes a form field mandatory before submitting?",
+    "options": ["validate", "required", "mandatory", "needed"],
+    "answerIndex": 1,
+    "explanation": "The required attribute stops the form from submitting until the field has a value."
+  },
+  {
+    "id": "html-15",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "What does the for attribute on a <label> do?",
+    "options": [
+      "Sets the font of the label",
+      "Links the label to the input with the same id",
+      "Loops through all form fields",
+      "Shows a tooltip on hover"
+    ],
+    "answerIndex": 1,
+    "explanation": "for connects the label to an input id. Clicking the label focuses the input, and screen readers read them together."
+  },
+  {
+    "id": "html-16",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which element should wrap the main content of a page and appear only once?",
+    "options": ["<section>", "<main>", "<body>", "<article>"],
+    "answerIndex": 1,
+    "explanation": "<main> holds the unique main content of the page. There should be only one visible <main> per page."
+  },
+  {
+    "id": "html-17",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which input type shows a date picker in modern browsers?",
+    "options": ["date", "calendar", "datetime-picker", "day"],
+    "answerIndex": 0,
+    "explanation": "<input type=\"date\"> shows a native date picker and stores the value as YYYY-MM-DD."
+  },
+  {
+    "id": "html-18",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "What does <!DOCTYPE html> do?",
+    "options": [
+      "Imports the CSS file",
+      "Tells the browser to render the page in standards mode",
+      "Creates the <head> section",
+      "Links JavaScript to the page"
+    ],
+    "answerIndex": 1,
+    "explanation": "The doctype tells the browser to use modern standards mode instead of the old quirks mode."
+  },
+  {
+    "id": "html-19",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which tag defines a header cell in a table?",
+    "options": ["<td>", "<th>", "<head>", "<tr>"],
+    "answerIndex": 1,
+    "explanation": "<th> is a table header cell. It is bold and centered by default and helps screen readers understand the table."
+  },
+  {
+    "id": "html-20",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "What does target=\"_blank\" do on a link?",
+    "options": [
+      "Opens the link in a new tab or window",
+      "Makes the link invisible",
+      "Downloads the linked file",
+      "Disables the link"
+    ],
+    "answerIndex": 0,
+    "explanation": "target=\"_blank\" opens the link in a new browsing context, usually a new tab."
+  },
+  {
+    "id": "html-21",
+    "category": "html",
+    "difficulty": "medium",
+    "question": "Which meta tag is needed for a page to scale correctly on mobile?",
+    "options": [
+      "<meta charset=\"UTF-8\">",
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "<meta name=\"mobile\" content=\"true\">",
+      "<meta http-equiv=\"refresh\" content=\"0\">"
+    ],
+    "answerIndex": 1,
+    "explanation": "The viewport meta tag sets the page width to the device width, so responsive CSS works on phones."
+  },
+  {
+    "id": "html-22",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "What is true about <script async>?",
+    "options": [
+      "It runs after the whole document is parsed, in order",
+      "It downloads in parallel and runs as soon as it is ready, possibly out of order",
+      "It always runs last after all other scripts",
+      "It only runs after a user interaction"
+    ],
+    "answerIndex": 1,
+    "explanation": "async scripts run as soon as they finish downloading, so their order is not guaranteed. defer keeps order and waits for parsing."
+  },
+  {
+    "id": "html-23",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "Which attribute delays loading images that are off screen?",
+    "options": ["loading=\"lazy\"", "defer", "async", "preload=\"none\""],
+    "answerIndex": 0,
+    "explanation": "loading=\"lazy\" on <img> or <iframe> tells the browser to load it only when it is near the viewport."
+  },
+  {
+    "id": "html-24",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "What does an empty alt attribute (alt=\"\") on an image mean?",
+    "options": [
+      "It is an error and must be avoided",
+      "The image is decorative, so screen readers skip it",
+      "The image is hidden from the page",
+      "The image loads faster"
+    ],
+    "answerIndex": 1,
+    "explanation": "An empty alt marks a decorative image. Screen readers ignore it, which is better than reading a file name."
+  },
+  {
+    "id": "html-25",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "Which element lets you provide different image sources for different screen sizes or formats?",
+    "options": ["<picture>", "<figure>", "<canvas>", "<srcset>"],
+    "answerIndex": 0,
+    "explanation": "<picture> holds several <source> elements with media or type conditions, plus an <img> fallback."
+  },
+  {
+    "id": "html-26",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "What does rel=\"noopener\" do on a link with target=\"_blank\"?",
+    "options": [
+      "Prevents the new page from accessing window.opener",
+      "Stops the link from opening",
+      "Preloads the linked page",
+      "Removes the link from search results"
+    ],
+    "answerIndex": 0,
+    "explanation": "noopener stops the opened page from controlling the original page through window.opener, which improves security."
+  },
+  {
+    "id": "html-27",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "Which attribute gives an accessible name to a button that only shows an icon?",
+    "options": ["aria-hidden", "aria-label", "aria-live", "role"],
+    "answerIndex": 1,
+    "explanation": "aria-label provides text that screen readers announce when the button has no visible text."
+  },
+  {
+    "id": "html-28",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "Which is a valid custom data attribute?",
+    "options": [
+      "data-user-id=\"42\"",
+      "custom-user-id=\"42\"",
+      "user:id=\"42\"",
+      "x-user-id=\"42\""
+    ],
+    "answerIndex": 0,
+    "explanation": "Custom data attributes must start with data-. In JavaScript you read it with element.dataset.userId."
+  },
+  {
+    "id": "html-29",
+    "category": "html",
+    "difficulty": "hard",
+    "question": "What does a <button> inside a <form> do when it has no type attribute?",
+    "options": [
+      "Nothing happens",
+      "It acts as type=\"submit\" and submits the form",
+      "It acts as type=\"reset\" and clears the form",
+      "It shows a validation error"
+    ],
+    "answerIndex": 1,
+    "explanation": "The default type of a button is submit. Add type=\"button\" when the button should not submit the form."
+  }
+]
