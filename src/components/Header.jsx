@@ -13,8 +13,7 @@ function Header() {
     <header className="header">
       <div className="container header-inner">
         <Link to="/" className="header-logo">
-          <span className="header-logo-icon">&lt;/&gt;</span>
-          <span>DevQuiz</span>
+          DevQuiz
         </Link>
 
         <div className="header-actions">
