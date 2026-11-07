@@ -13,15 +13,17 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-3);
-  min-height: 64px;
+  min-height: 68px;
   padding-block: var(--space-2);
 }
 
 .header-logo {
-  font-size: var(--fs-lg);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
   color: var(--color-text);
+  transition: color var(--transition);
 }
 
 .header-logo:hover {
@@ -66,6 +68,10 @@
   .header-inner {
     min-height: auto;
     row-gap: var(--space-2);
+  }
+
+  .header-logo {
+    font-size: 1.25rem;
   }
 
   .header-actions {

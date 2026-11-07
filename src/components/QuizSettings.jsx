@@ -1,4 +1,4 @@
-import { TIMER_OPTIONS } from '../utils/settingsUtils'
+import { QUESTION_COUNT_OPTIONS, TIMER_OPTIONS } from '../utils/settingsUtils'
 import './QuizSettings.css'
 
 function QuizSettings({ settings, onChange }) {
@@ -18,6 +18,32 @@ function QuizSettings({ settings, onChange }) {
           <span className="text-muted">Mix up question and answer order</span>
         </span>
       </label>
+
+      <div className="setting-group">
+        <span className="setting-text" id="count-setting-label">
+          <strong>Number of questions</strong>
+          <span className="text-muted">Picked at random from the selected topic</span>
+        </span>
+
+        <div className="setting-options" role="radiogroup" aria-labelledby="count-setting-label">
+          {QUESTION_COUNT_OPTIONS.map((value) => {
+            const isSelected = settings.questionCount === value
+
+            return (
+              <button
+                key={value}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                className={isSelected ? 'setting-option selected' : 'setting-option'}
+                onClick={() => onChange({ questionCount: value })}
+              >
+                {value}
+              </button>
+            )
+          })}
+        </div>
+      </div>
 
       <div className="setting-group">
         <span className="setting-text" id="timer-setting-label">
