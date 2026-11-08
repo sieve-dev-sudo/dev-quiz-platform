@@ -144,9 +144,18 @@
 }
 
 html {
+  /* Always reserve space for the scrollbar so the layout does not shift between pages */
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
   scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+@supports (scrollbar-gutter: stable) {
+  html {
+    overflow-y: auto;
+  }
 }
 
 html,
