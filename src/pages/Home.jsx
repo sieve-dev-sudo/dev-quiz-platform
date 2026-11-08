@@ -41,11 +41,6 @@ function Home() {
 
   return (
     <section className="home">
-      <div className="home-hero">
-        <h1>Dev Quiz Platform</h1>
-        <p className="text-muted">Test your coding knowledge, fully offline.</p>
-      </div>
-
       <MistakesBanner total={mistakeList.length} countsByCategory={countsByCategory} />
 
       <div className="home-section">
