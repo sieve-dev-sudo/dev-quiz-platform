@@ -24,12 +24,10 @@ import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Quiz.css'
 
 function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
-  const { shuffle, questionCount } = normalizeSettings(
-    readStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS),
-  )
+  const { shuffle } = normalizeSettings(readStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS))
 
   if (!isMistakesMode) {
-    return { category: categoryId, difficulty: difficultyId, shuffle, limit: questionCount }
+    return { category: categoryId, difficulty: difficultyId, shuffle }
   }
 
   const storedMistakes = readStorage(STORAGE_KEYS.MISTAKES, {})
