@@ -62,7 +62,7 @@
   --transition: 0.2s ease;
 
   /* Layout */
-  --container-width: 960px;
+  --container-width: 1120px;
 
   color-scheme: light;
 }
@@ -144,9 +144,18 @@
 }
 
 html {
+  /* Always reserve space for the scrollbar so the layout does not shift between pages */
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
   scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+@supports (scrollbar-gutter: stable) {
+  html {
+    overflow-y: auto;
+  }
 }
 
 html,

@@ -22,7 +22,8 @@
 
 ## ✨ Features
 
-- **សំណួរ ៤១**: មាន ៥ ប្រធានបទ HTML, CSS, JavaScript, React, Git និង ៣ កម្រិត Easy, Medium, Hard
+- **សំណួរ ១២០**: មាន ៥ ប្រធានបទ HTML (30), CSS (30), JavaScript (30), React (15), Git (15) និង ៣ កម្រិត Easy, Medium, Hard ចែកស្មើគ្នា
+- **ចំនួនសំណួរតាមកម្រិត**: ជ្រើស Easy, Medium ឬ Hard ដើម្បីធ្វើ 10 សំណួរ (React និង Git 5) ឬ All ដើម្បីធ្វើទាំងអស់ក្នុងប្រធានបទ
 - **សំណួរកូដ (Code Snippet)**: បង្ហាញកូដមានលេខបន្ទាត់ ស្លាកភាសា និងប៊ូតុង **Copy** ហើយសួរថា Output គឺអ្វី
 - **ពិនិត្យចម្លើយភ្លាមៗ**: ពណ៌បៃតង ✓ ពេលត្រូវ ពណ៌ក្រហម ✗ ពេលខុស ព្រមទាំងបង្ហាញចម្លើយត្រូវ និងការពន្យល់
 - **Progress Bar**: បង្ហាញ Question X of Y ភាគរយ និងចំណុចពណ៌តាមលទ្ធផលសំណួរនីមួយៗ
@@ -50,7 +51,6 @@ dev-quiz-platform/
 ├── src/
 │   ├── components/
 │   │   ├── Header.jsx / .css             → Navbar ជាប់ខាងលើ
-│   │   ├── Footer.jsx / .css
 │   │   ├── Layout.jsx / .css             → ស៊ុមទំព័រទាំងអស់
 │   │   ├── ThemeToggle.jsx / .css        → ប៊ូតុង Light, Dark, System
 │   │   ├── CategoryCard.jsx / .css       → កាតប្រធានបទលើទំព័រ Home
@@ -80,9 +80,15 @@ dev-quiz-platform/
 │   │   ├── QuizProvider.jsx              → គ្រប់គ្រង state របស់ quiz
 │   │   └── quizReducer.js                → start, answer, next, finish, reset
 │   ├── data/
-│   │   ├── questions.json                → សំណួរធម្មតា ៣០
+│   │   ├── questions.json                → សំណួរមូលដ្ឋាន ៣០
 │   │   ├── codeQuestions.json            → សំណួរកូដ ១១
-│   │   └── categories.js                 → ប្រធានបទ និងកម្រិត
+│   │   ├── categories.js                 → ប្រធានបទ និងកម្រិត
+│   │   └── extra/                        → សំណួរបន្ថែមតាមប្រធានបទ
+│   │       ├── html.json                 → +២៣
+│   │       ├── css.json                  → +២២
+│   │       ├── javascript.json           → +១៩
+│   │       ├── react.json                → +៧
+│   │       └── git.json                  → +៨
 │   ├── hooks/
 │   │   ├── useQuiz.js
 │   │   ├── useLocalStorage.js            → useState ដែលរក្សាទុកស្វ័យប្រវត្តិ
@@ -133,7 +139,7 @@ dev-quiz-platform/
 
 ## 📱 Mobile Mode
 
-- Header ចុះជាពីរជួរ: Logo និងប៊ូតុង Theme នៅខាងលើ ហើយ Menu Home / History / Stats ពេញទទឹងនៅខាងក្រោម
+- Header ចុះជាពីរជួរ: ឈ្មោះ **DevQuiz Platform** និងប៊ូតុង Theme នៅខាងលើ ហើយ Menu Home / History / Stats ពេញទទឹងនៅខាងក្រោម
 - កាតប្រធានបទរៀប ២ ជួរឈរ ហើយ Difficulty ជាប្រអប់ 2×2 លើទូរស័ព្ទតូច
 - ប៊ូតុង **Start Quiz** ពេញទទឹង ហើយជាប់នៅខាងក្រោមអេក្រង់ពេល Scroll
 - ប៊ូតុងក្នុងទំព័រលទ្ធផលចុះជាជួរឈរ ងាយចុចដោយមេដៃ
@@ -169,7 +175,7 @@ dev-quiz-platform/
    npm run dev
    ```
 
-4. បើក Browser ចូល `http://localhost:5173` ហើយសាកល្បងជ្រើសប្រធានបទ ធ្វើ quiz បើក Timer ប្តូរ Theme និងចូលទំព័រ History និង Stats។
+4. បើក Browser ចូល `http://localhost:5173` ហើយសាកល្បងជ្រើសប្រធានបទ និងកម្រិត ធ្វើ quiz បើក Timer ប្តូរ Theme និងចូលទំព័រ History និង Stats។
 5. ដើម្បីពិនិត្យកូដ (Lint):
 
    ```bash
