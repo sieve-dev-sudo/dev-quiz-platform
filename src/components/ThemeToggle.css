@@ -1,5 +1,6 @@
 .theme-toggle {
   display: inline-flex;
+  gap: 2px;
   padding: var(--space-1);
   border-radius: var(--radius-full);
   background-color: var(--color-surface-2);
@@ -8,12 +9,12 @@
 .theme-option {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border: none;
   border-radius: var(--radius-full);
   background: transparent;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   line-height: 1;
   opacity: 0.6;
   transition: background-color var(--transition), opacity var(--transition),
@@ -28,4 +29,12 @@
   background-color: var(--color-surface);
   box-shadow: var(--shadow-sm);
   opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .theme-option {
+    width: 34px;
+    height: 34px;
+    font-size: var(--fs-sm);
+  }
 }
