@@ -20,13 +20,3 @@ export function shuffleQuestionOptions(question) {
     answerIndex: order.indexOf(question.answerIndex),
   }
 }
-
-export function pickRandom(items, count) {
-  if (!count || count >= items.length) return [...items]
-
-  const pickedIndexes = new Set(
-    shuffleArray(items.map((_, index) => index)).slice(0, count),
-  )
-
-  return items.filter((_, index) => pickedIndexes.has(index))
-}
