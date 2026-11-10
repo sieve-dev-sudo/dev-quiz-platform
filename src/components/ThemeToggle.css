@@ -2,6 +2,7 @@
   display: inline-flex;
   gap: 2px;
   padding: var(--space-1);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   background-color: var(--color-surface-2);
 }
@@ -14,27 +15,38 @@
   border: none;
   border-radius: var(--radius-full);
   background: transparent;
-  font-size: var(--fs-base);
-  line-height: 1;
-  opacity: 0.6;
-  transition: background-color var(--transition), opacity var(--transition),
+  color: var(--color-text-muted);
+  transition: background-color var(--transition), color var(--transition),
     box-shadow var(--transition);
 }
 
 .theme-option:hover {
-  opacity: 1;
+  color: var(--color-text);
 }
 
 .theme-option.selected {
   background-color: var(--color-surface);
+  color: var(--color-primary);
   box-shadow: var(--shadow-sm);
-  opacity: 1;
+}
+
+.theme-option:focus-visible {
+  outline-offset: 1px;
+}
+
+.theme-icon {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 600px) {
   .theme-option {
     width: 34px;
     height: 34px;
-    font-size: var(--fs-sm);
+  }
+
+  .theme-icon {
+    width: 16px;
+    height: 16px;
   }
 }
