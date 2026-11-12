@@ -6,6 +6,10 @@ import {
   isTextInput,
 } from '../utils/keyboardUtils'
 
+function isDialogOpen() {
+  return document.querySelector('dialog[open]') !== null
+}
+
 export function useQuizShortcuts({ enabled, optionCount, isAnswered, onSelect, onNext }) {
   const latestRef = useRef({ optionCount, isAnswered, onSelect, onNext })
 
@@ -17,7 +21,7 @@ export function useQuizShortcuts({ enabled, optionCount, isAnswered, onSelect, o
     if (!enabled) return undefined
 
     function handleKeyDown(event) {
-      if (hasModifier(event) || event.repeat) return
+      if (hasModifier(event) || event.repeat || isDialogOpen()) return
 
       const latest = latestRef.current
 
