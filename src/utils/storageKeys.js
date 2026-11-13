@@ -6,4 +6,5 @@ export const STORAGE_KEYS = {
   MISTAKES: 'mistakes',
   SETTINGS: 'settings',
   THEME: 'theme',
+  ACTIVE_QUIZ: 'active-quiz',
 }
