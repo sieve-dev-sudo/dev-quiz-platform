@@ -6,6 +6,7 @@ export const QUIZ_STATUS = {
 
 export const ACTIONS = {
   START: 'START_QUIZ',
+  RESTORE: 'RESTORE_QUIZ',
   ANSWER: 'ANSWER_QUESTION',
   NEXT: 'NEXT_QUESTION',
   FINISH: 'FINISH_QUIZ',
@@ -14,6 +15,7 @@ export const ACTIONS = {
 
 export const initialState = {
   status: QUIZ_STATUS.IDLE,
+  mode: 'normal',
   category: 'all',
   difficulty: 'all',
   questions: [],
@@ -21,20 +23,40 @@ export const initialState = {
   answers: [],
   startedAt: null,
   finishedAt: null,
+  resumed: false,
 }
 
 export function quizReducer(state, action) {
   switch (action.type) {
     case ACTIONS.START: {
-      const { category, difficulty, questions, startedAt } = action.payload
+      const { mode, category, difficulty, questions, startedAt } = action.payload
 
       return {
         ...initialState,
         status: QUIZ_STATUS.ACTIVE,
+        mode: mode ?? 'normal',
         category,
         difficulty,
         questions,
         startedAt,
+      }
+    }
+
+    case ACTIONS.RESTORE: {
+      const { mode, category, difficulty, questions, currentIndex, answers, startedAt } =
+        action.payload
+
+      return {
+        ...initialState,
+        status: QUIZ_STATUS.ACTIVE,
+        mode: mode ?? 'normal',
+        category,
+        difficulty,
+        questions,
+        currentIndex,
+        answers,
+        startedAt,
+        resumed: true,
       }
     }
 
@@ -74,12 +96,14 @@ export function quizReducer(state, action) {
           ...state,
           status: QUIZ_STATUS.FINISHED,
           finishedAt: action.payload.timestamp,
+          resumed: false,
         }
       }
 
       return {
         ...state,
         currentIndex: state.currentIndex + 1,
+        resumed: false,
       }
     }
 
@@ -90,6 +114,7 @@ export function quizReducer(state, action) {
         ...state,
         status: QUIZ_STATUS.FINISHED,
         finishedAt: action.payload.timestamp,
+        resumed: false,
       }
     }
 
