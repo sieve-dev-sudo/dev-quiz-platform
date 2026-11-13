@@ -1,14 +1,18 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CategoryCard from '../components/CategoryCard'
 import DifficultySelector from '../components/DifficultySelector'
 import MistakesBanner from '../components/MistakesBanner'
 import QuizSettings from '../components/QuizSettings'
+import ResumeBanner from '../components/ResumeBanner'
 import { CATEGORIES, DIFFICULTIES } from '../data/categories'
 import { useBestScores } from '../hooks/useBestScores'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useMistakes } from '../hooks/useMistakes'
+import { useQuiz } from '../hooks/useQuiz'
 import { useSettings } from '../hooks/useSettings'
 import { countQuestions } from '../utils/questionUtils'
+import { readSavedQuiz } from '../utils/savedQuiz'
 import { STORAGE_KEYS } from '../utils/storageKeys'
 import './Home.css'
 
@@ -21,6 +25,8 @@ function Home() {
   const { bestScores } = useBestScores()
   const { mistakeList, countsByCategory } = useMistakes()
   const { settings, updateSettings } = useSettings()
+  const { resetQuiz } = useQuiz()
+  const [savedQuiz, setSavedQuiz] = useState(() => readSavedQuiz())
 
   const category = CATEGORIES.some((item) => item.id === storedCategory) ? storedCategory : null
   const difficulty = VALID_DIFFICULTIES.includes(storedDifficulty) ? storedDifficulty : 'all'
@@ -33,14 +39,25 @@ function Home() {
 
   const availableCount = category ? countQuestions(category, difficulty) : 0
   const canStart = category !== null && availableCount > 0
+  const showResume = savedQuiz !== null && savedQuiz.answers.length > 0
 
   function handleStart() {
     if (!canStart) return
+
+    // Starting from Home always begins a new quiz
+    resetQuiz()
     navigate(`/quiz?category=${category}&difficulty=${difficulty}`)
+  }
+
+  function handleDiscard() {
+    resetQuiz()
+    setSavedQuiz(null)
   }
 
   return (
     <section className="home">
+      {showResume && <ResumeBanner savedQuiz={savedQuiz} onDiscard={handleDiscard} />}
+
       <MistakesBanner total={mistakeList.length} countsByCategory={countsByCategory} />
 
       <div className="home-section">

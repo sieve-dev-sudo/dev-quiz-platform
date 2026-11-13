@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import ConfirmDialog from './ConfirmDialog'
 import ThemeToggle from './ThemeToggle'
@@ -19,19 +19,6 @@ function Header() {
   const { resetQuiz } = useQuiz()
   const isQuizInProgress = useQuizInProgress()
   const [pendingPath, setPendingPath] = useState(null)
-
-  // Warn on refresh or tab close while a quiz is in progress
-  useEffect(() => {
-    if (!isQuizInProgress) return undefined
-
-    function handleBeforeUnload(event) {
-      event.preventDefault()
-      event.returnValue = ''
-    }
-
-    window.addEventListener('beforeunload', handleBeforeUnload)
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
-  }, [isQuizInProgress])
 
   function handleNavigate(event, to) {
     if (!isQuizInProgress || to === pathname) return
