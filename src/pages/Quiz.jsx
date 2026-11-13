@@ -18,6 +18,7 @@ import { useSettings } from '../hooks/useSettings'
 import { isBetterScore } from '../utils/bestScoreUtils'
 import { createHistoryEntry } from '../utils/historyUtils'
 import { getMistakeQuestionIds } from '../utils/mistakeUtils'
+import { isSameQuiz, readSavedQuiz } from '../utils/savedQuiz'
 import { DEFAULT_SETTINGS, normalizeSettings } from '../utils/settingsUtils'
 import { readStorage } from '../utils/storage'
 import { STORAGE_KEYS } from '../utils/storageKeys'
@@ -27,12 +28,13 @@ function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
   const { shuffle } = normalizeSettings(readStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS))
 
   if (!isMistakesMode) {
-    return { category: categoryId, difficulty: difficultyId, shuffle }
+    return { mode: 'normal', category: categoryId, difficulty: difficultyId, shuffle }
   }
 
   const storedMistakes = readStorage(STORAGE_KEYS.MISTAKES, {})
 
   return {
+    mode: 'mistakes',
     category: categoryId,
     difficulty: 'all',
     questionIds: getMistakeQuestionIds(storedMistakes, categoryId),
@@ -71,7 +73,9 @@ function Quiz() {
     isLastQuestion,
     startedAt,
     finishedAt,
+    resumed,
     startQuiz,
+    restoreQuiz,
     answerQuestion,
     nextQuestion,
     resetQuiz,
@@ -85,9 +89,18 @@ function Quiz() {
 
   const isAnswered = currentAnswer !== null
 
+  // Resume a saved quiz for the same URL, otherwise start a new one
   useEffect(() => {
+    const mode = isMistakesMode ? 'mistakes' : 'normal'
+    const savedQuiz = readSavedQuiz()
+
+    if (savedQuiz && isSameQuiz(savedQuiz, { mode, category: categoryId, difficulty: difficultyId })) {
+      restoreQuiz(savedQuiz)
+      return
+    }
+
     startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
-  }, [isMistakesMode, categoryId, difficultyId, startQuiz])
+  }, [isMistakesMode, categoryId, difficultyId, startQuiz, restoreQuiz])
 
   function handleRestart() {
     startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
@@ -212,6 +225,12 @@ function Quiz() {
 
   return (
     <section className="card quiz-box">
+      {resumed && (
+        <p className="quiz-resumed" role="status">
+          <span aria-hidden="true">↩</span> Welcome back! You continued where you left off.
+        </p>
+      )}
+
       <ProgressBar
         current={currentIndex + 1}
         total={totalQuestions}
