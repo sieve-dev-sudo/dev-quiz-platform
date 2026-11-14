@@ -1,14 +1,11 @@
 import { useEffect, useRef } from 'react'
 import {
-  getOptionIndexFromKey,
+  getOptionIndexFromEvent,
   hasModifier,
   isActiveControl,
+  isDialogOpen,
   isTextInput,
 } from '../utils/keyboardUtils'
-
-function isDialogOpen() {
-  return document.querySelector('dialog[open]') !== null
-}
 
 export function useQuizShortcuts({ enabled, optionCount, isAnswered, onSelect, onNext }) {
   const latestRef = useRef({ optionCount, isAnswered, onSelect, onNext })
@@ -35,7 +32,7 @@ export function useQuizShortcuts({ enabled, optionCount, isAnswered, onSelect, o
 
       if (latest.isAnswered || isTextInput(event.target)) return
 
-      const index = getOptionIndexFromKey(event.key)
+      const index = getOptionIndexFromEvent(event)
 
       if (index >= 0 && index < latest.optionCount) {
         event.preventDefault()

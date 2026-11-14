@@ -1,6 +1,23 @@
 import './KeyboardHint.css'
 
-function KeyboardHint({ optionCount = 4 }) {
+function ResultHint() {
+  return (
+    <p className="keyboard-hint">
+      <span aria-hidden="true">⌨️</span>
+      <span>
+        <kbd>R</kbd> try again
+      </span>
+      <span className="keyboard-hint-separator" aria-hidden="true">
+        ·
+      </span>
+      <span>
+        <kbd>H</kbd> home
+      </span>
+    </p>
+  )
+}
+
+function QuizHint({ optionCount }) {
   const lastNumber = Math.min(optionCount, 9)
   const lastLetter = String.fromCharCode('A'.charCodeAt(0) + optionCount - 1)
 
@@ -19,6 +36,11 @@ function KeyboardHint({ optionCount = 4 }) {
       </span>
     </p>
   )
+}
+
+function KeyboardHint({ variant = 'quiz', optionCount = 4 }) {
+  if (variant === 'result') return <ResultHint />
+  return <QuizHint optionCount={optionCount} />
 }
 
 export default KeyboardHint

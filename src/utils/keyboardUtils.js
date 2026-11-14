@@ -17,6 +17,10 @@ export function hasModifier(event) {
   return event.ctrlKey || event.metaKey || event.altKey
 }
 
+export function isDialogOpen() {
+  return document.querySelector('dialog[open]') !== null
+}
+
 export function getOptionIndexFromKey(key) {
   if (/^[1-9]$/.test(key)) {
     return Number(key) - 1
@@ -27,4 +31,29 @@ export function getOptionIndexFromKey(key) {
   }
 
   return -1
+}
+
+// Uses the physical key (event.code) so shortcuts work with any keyboard layout,
+// including Khmer. Falls back to event.key for older browsers.
+export function getOptionIndexFromEvent(event) {
+  const code = event.code ?? ''
+
+  const digit = /^(?:Digit|Numpad)([1-9])$/.exec(code)
+  if (digit) return Number(digit[1]) - 1
+
+  const letter = /^Key([A-F])$/.exec(code)
+  if (letter) return letter[1].charCodeAt(0) - 'A'.charCodeAt(0)
+
+  return getOptionIndexFromKey(event.key ?? '')
+}
+
+export function getLetterFromEvent(event) {
+  const match = /^Key([A-Z])$/.exec(event.code ?? '')
+  if (match) return match[1].toLowerCase()
+
+  if (typeof event.key === 'string' && event.key.length === 1) {
+    return event.key.toLowerCase()
+  }
+
+  return null
 }
