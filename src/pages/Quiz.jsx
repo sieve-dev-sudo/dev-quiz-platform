@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
 import QuestionTimer from '../components/QuestionTimer'
 import QuestionCard from '../components/QuestionCard'
@@ -14,6 +14,7 @@ import { useMistakes } from '../hooks/useMistakes'
 import { useQuiz } from '../hooks/useQuiz'
 import { useQuizHistory } from '../hooks/useQuizHistory'
 import { useQuizShortcuts } from '../hooks/useQuizShortcuts'
+import { useResultShortcuts } from '../hooks/useResultShortcuts'
 import { useSettings } from '../hooks/useSettings'
 import { isBetterScore } from '../utils/bestScoreUtils'
 import { createHistoryEntry } from '../utils/historyUtils'
@@ -51,6 +52,7 @@ function getQuizTitle(isMistakesMode, category) {
 }
 
 function Quiz() {
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const isMistakesMode = searchParams.get('mode') === 'mistakes'
   const categoryId = searchParams.get('category') || 'all'
@@ -106,6 +108,11 @@ function Quiz() {
     startQuiz(buildStartOptions(isMistakesMode, categoryId, difficultyId))
   }
 
+  function handleGoHome() {
+    resetQuiz()
+    navigate('/')
+  }
+
   function handleTimeUp() {
     answerQuestion(null)
   }
@@ -145,6 +152,12 @@ function Quiz() {
     isAnswered,
     onSelect: answerQuestion,
     onNext: handleNext,
+  })
+
+  useResultShortcuts({
+    enabled: status === QUIZ_STATUS.FINISHED,
+    onRetry: handleRestart,
+    onHome: handleGoHome,
   })
 
   const currentBestRecord = bestRecord?.startedAt === startedAt ? bestRecord : null
@@ -196,7 +209,12 @@ function Quiz() {
         />
 
         <div className="quiz-actions quiz-result-actions">
-          <button type="button" className="btn btn-primary" onClick={handleRestart}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleRestart}
+            aria-keyshortcuts="R"
+          >
             Try Again
           </button>
           {hasWrongAnswers && !isMistakesMode && (
@@ -207,10 +225,12 @@ function Quiz() {
           <Link to="/history" className="btn btn-outline" onClick={resetQuiz}>
             View History
           </Link>
-          <Link to="/" className="btn btn-outline" onClick={resetQuiz}>
+          <Link to="/" className="btn btn-outline" onClick={resetQuiz} aria-keyshortcuts="H">
             Back to Home
           </Link>
         </div>
+
+        <KeyboardHint variant="result" />
 
         <AnswerReview questions={questions} answers={answers} />
       </div>
