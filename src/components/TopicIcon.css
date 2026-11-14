@@ -1,0 +1,31 @@
+.topic-icon {
+  --topic-size: 40px;
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: var(--topic-size);
+  height: var(--topic-size);
+  border-radius: var(--radius-md);
+  color: var(--topic-color);
+  background-color: color-mix(in srgb, var(--topic-color) 14%, transparent);
+}
+
+.topic-icon .icon {
+  width: 55%;
+  height: 55%;
+}
+
+.topic-icon-xs {
+  --topic-size: 22px;
+  border-radius: var(--radius-sm);
+}
+
+.topic-icon-sm {
+  --topic-size: 30px;
+  border-radius: var(--radius-sm);
+}
+
+.topic-icon-lg {
+  --topic-size: 52px;
+  border-radius: var(--radius-lg);
+}
