@@ -1,13 +1,5 @@
 import { CATEGORIES, DIFFICULTIES } from '../data/categories'
 
-export const TOPIC_COLORS = {
-  html: '#f97316',
-  css: '#3b82f6',
-  javascript: '#eab308',
-  react: '#06b6d4',
-  git: '#a855f7',
-}
-
 const DIFFICULTY_COLORS = {
   easy: 'var(--color-success)',
   medium: 'var(--color-warning)',
@@ -21,7 +13,7 @@ export function getTopicDistribution(history) {
     label: category.name,
     icon: category.icon,
     value: history.filter((entry) => entry.category === category.id).length,
-    color: TOPIC_COLORS[category.id],
+    color: category.color,
   })).filter((item) => item.value > 0)
 }
 
@@ -35,8 +27,14 @@ export function getAnswerDistribution(history) {
   )
 
   return [
-    { id: 'correct', label: 'Correct', value: totals.correct, color: 'var(--color-success)' },
-    { id: 'wrong', label: 'Wrong', value: totals.wrong, color: 'var(--color-error)' },
+    {
+      id: 'correct',
+      label: 'Correct',
+      icon: 'check',
+      value: totals.correct,
+      color: 'var(--color-success)',
+    },
+    { id: 'wrong', label: 'Wrong', icon: 'x', value: totals.wrong, color: 'var(--color-error)' },
   ].filter((item) => item.value > 0)
 }
 
