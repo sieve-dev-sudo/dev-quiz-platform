@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { formatDate } from '../utils/historyUtils'
 import { formatDuration, getGrade } from '../utils/resultUtils'
+import Icon from './Icon'
+import TopicIcon from './TopicIcon'
 import './HistoryItem.css'
 
 function HistoryItem({ entry, onDelete }) {
@@ -11,9 +13,7 @@ function HistoryItem({ entry, onDelete }) {
 
   return (
     <li className="history-item">
-      <span className="history-item-icon" aria-hidden="true">
-        {category?.icon ?? '❓'}
-      </span>
+      <TopicIcon category={category} size="lg" />
 
       <div className="history-item-info">
         <div className="history-item-title">
@@ -48,7 +48,7 @@ function HistoryItem({ entry, onDelete }) {
           aria-label="Delete this result"
           title="Delete"
         >
-          ✕
+          <Icon name="x" size={16} />
         </button>
       </div>
     </li>
