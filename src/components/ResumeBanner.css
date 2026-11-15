@@ -11,17 +11,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-.resume-banner-icon {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  font-size: 1.75rem;
-  background-color: var(--color-primary-soft);
-}
-
 .resume-banner-info {
   flex: 1;
   min-width: 220px;
@@ -79,12 +68,6 @@
   .resume-banner {
     padding: var(--space-4);
     border-radius: var(--radius-md);
-  }
-
-  .resume-banner-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.375rem;
   }
 
   .resume-banner-actions {
