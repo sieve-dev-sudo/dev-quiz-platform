@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { getSavedQuizUrl } from '../utils/savedQuiz'
+import TopicIcon from './TopicIcon'
 import './ResumeBanner.css'
 
 function getTitle(savedQuiz, category) {
@@ -13,16 +14,19 @@ function getTitle(savedQuiz, category) {
 
 function ResumeBanner({ savedQuiz, onDiscard }) {
   const category = getCategoryById(savedQuiz.category)
-  const difficulty = savedQuiz.mode === 'mistakes' ? null : getDifficultyById(savedQuiz.difficulty)
+  const isMistakes = savedQuiz.mode === 'mistakes'
+  const difficulty = isMistakes ? null : getDifficultyById(savedQuiz.difficulty)
   const answered = savedQuiz.answers.length
   const total = savedQuiz.questions.length
   const percent = Math.round((answered / total) * 100)
 
   return (
     <section className="resume-banner" aria-label="Unfinished quiz">
-      <span className="resume-banner-icon" aria-hidden="true">
-        {savedQuiz.mode === 'mistakes' ? '🔁' : (category?.icon ?? '📝')}
-      </span>
+      {isMistakes ? (
+        <TopicIcon icon="rotate" color="var(--color-warning)" size="lg" />
+      ) : (
+        <TopicIcon category={category} icon={category ? undefined : 'clipboard'} size="lg" />
+      )}
 
       <div className="resume-banner-info">
         <p className="resume-banner-eyebrow">Unfinished quiz</p>
