@@ -1,3 +1,5 @@
+import Icon from './Icon'
+import TopicIcon from './TopicIcon'
 import './CategoryCard.css'
 
 function CategoryCard({ category, count, bestScore, isSelected, onSelect }) {
@@ -8,9 +10,7 @@ function CategoryCard({ category, count, bestScore, isSelected, onSelect }) {
       onClick={() => onSelect(category.id)}
       aria-pressed={isSelected}
     >
-      <span className="category-card-icon" aria-hidden="true">
-        {category.icon}
-      </span>
+      <TopicIcon category={category} size="lg" />
       <span className="category-card-name">{category.name}</span>
       <span className="category-card-desc">{category.description}</span>
 
@@ -18,7 +18,8 @@ function CategoryCard({ category, count, bestScore, isSelected, onSelect }) {
         <span className="category-card-count">{count} questions</span>
         {bestScore ? (
           <span className="category-card-best" title="Best score">
-            🏆 {bestScore.percent}%
+            <Icon name="trophy" size={14} />
+            {bestScore.percent}%
           </span>
         ) : (
           <span className="category-card-best empty">Not played</span>
