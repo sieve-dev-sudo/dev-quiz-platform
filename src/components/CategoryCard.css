@@ -25,11 +25,6 @@
   background-color: var(--color-primary-soft);
 }
 
-.category-card-icon {
-  font-size: 2rem;
-  line-height: 1;
-}
-
 .category-card-name {
   font-size: var(--fs-lg);
   font-weight: 700;
@@ -59,6 +54,9 @@
 }
 
 .category-card-best {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   font-weight: 700;
@@ -80,10 +78,6 @@
 
   .category-card:hover {
     transform: none;
-  }
-
-  .category-card-icon {
-    font-size: 1.5rem;
   }
 
   .category-card-name {
