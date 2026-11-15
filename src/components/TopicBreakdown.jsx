@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { getGrade } from '../utils/resultUtils'
+import TopicIcon from './TopicIcon'
 import './TopicBreakdown.css'
 
 function TopicBreakdown({ stats }) {
@@ -15,7 +16,7 @@ function TopicBreakdown({ stats }) {
           return (
             <li key={item.category.id} className="topic-row">
               <div className="topic-row-name">
-                <span aria-hidden="true">{item.category.icon}</span>
+                <TopicIcon category={item.category} size="sm" />
                 <strong>{item.category.name}</strong>
               </div>
 

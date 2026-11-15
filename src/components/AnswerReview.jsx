@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { isCodeQuestion } from '../utils/questionUtils'
 import CodeBlock from './CodeBlock'
+import Icon from './Icon'
 import './AnswerReview.css'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -51,7 +52,10 @@ function AnswerReview({ questions, answers }) {
       </div>
 
       {visibleItems.length === 0 ? (
-        <p className="text-muted answer-review-empty">No mistakes. Great job! 🎉</p>
+        <p className="text-muted answer-review-empty">
+          <Icon name="sparkles" size={18} />
+          No mistakes. Great job!
+        </p>
       ) : (
         <ol className="answer-review-list">
           {visibleItems.map(({ question, number, answer }) => {
@@ -66,7 +70,12 @@ function AnswerReview({ questions, answers }) {
                   <span className={isCorrect ? 'badge badge-success' : 'badge badge-error'}>
                     {isCorrect ? 'Correct' : 'Wrong'}
                   </span>
-                  {answer?.timedOut && <span className="badge badge-warning">⏰ Time out</span>}
+                  {answer?.timedOut && (
+                    <span className="badge badge-warning">
+                      <Icon name="clock" size={12} />
+                      Time out
+                    </span>
+                  )}
                 </div>
 
                 <p className="review-item-question">{question.question}</p>

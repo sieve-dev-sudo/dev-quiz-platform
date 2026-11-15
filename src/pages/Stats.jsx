@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import Icon from '../components/Icon'
 import StatCard from '../components/StatCard'
 import RecentScores from '../components/RecentScores'
 import TopicBreakdown from '../components/TopicBreakdown'
+import TopicIcon from '../components/TopicIcon'
 import { useBestScores } from '../hooks/useBestScores'
 import { useMistakes } from '../hooks/useMistakes'
 import { useQuizHistory } from '../hooks/useQuizHistory'
@@ -36,8 +38,8 @@ function Stats() {
   if (history.length === 0) {
     return (
       <section className="card stats-empty">
-        <span className="stats-empty-icon" aria-hidden="true">
-          📊
+        <span className="empty-icon" aria-hidden="true">
+          <Icon name="bar-chart" size={32} />
         </span>
         <h2>No stats yet</h2>
         <p className="text-muted">Finish a quiz to see your progress and statistics here.</p>
@@ -73,17 +75,17 @@ function Stats() {
       </div>
 
       <div className="stats-grid">
-        <StatCard icon="📝" label="Quizzes taken" value={overall.quizzes} />
+        <StatCard icon="clipboard" label="Quizzes taken" value={overall.quizzes} />
         <StatCard
-          icon="🎯"
+          icon="target"
           label="Accuracy"
           value={`${overall.accuracy}%`}
           hint={`${overall.correct} of ${overall.questions} correct`}
           tone={getGrade(overall.accuracy).tone}
         />
-        <StatCard icon="⏱️" label="Time spent" value={formatDuration(overall.time)} />
+        <StatCard icon="clock" label="Time spent" value={formatDuration(overall.time)} />
         <StatCard
-          icon="🔁"
+          icon="rotate"
           label="To review"
           value={mistakeList.length}
           hint={mistakeList.length > 0 ? 'Saved mistakes' : 'All clear'}
@@ -92,11 +94,15 @@ function Stats() {
 
       <div className="stats-highlights">
         <div className="card highlight-card strong">
-          <span className="highlight-label">💪 Strongest topic</span>
+          <span className="highlight-label">
+            <Icon name="trending-up" size={16} />
+            Strongest topic
+          </span>
           {strongest ? (
             <>
               <span className="highlight-topic">
-                {strongest.category.icon} {strongest.category.name}
+                <TopicIcon category={strongest.category} size="sm" />
+                {strongest.category.name}
               </span>
               <span className="highlight-value">{strongest.accuracy}% accuracy</span>
             </>
@@ -106,11 +112,15 @@ function Stats() {
         </div>
 
         <div className="card highlight-card weak">
-          <span className="highlight-label">📚 Needs practice</span>
+          <span className="highlight-label">
+            <Icon name="book-open" size={16} />
+            Needs practice
+          </span>
           {weakest ? (
             <>
               <span className="highlight-topic">
-                {weakest.category.icon} {weakest.category.name}
+                <TopicIcon category={weakest.category} size="sm" />
+                {weakest.category.name}
               </span>
               <span className="highlight-value">{weakest.accuracy}% accuracy</span>
               <Link
