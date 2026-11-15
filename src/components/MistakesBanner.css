@@ -17,11 +17,6 @@
   gap: var(--space-3);
 }
 
-.mistakes-banner-icon {
-  font-size: 2rem;
-  line-height: 1;
-}
-
 .mistakes-banner-title {
   font-size: var(--fs-lg);
 }
@@ -69,10 +64,6 @@
   .mistakes-banner {
     padding: var(--space-4);
     border-radius: var(--radius-md);
-  }
-
-  .mistakes-banner-icon {
-    font-size: 1.5rem;
   }
 
   .mistakes-banner-actions {
