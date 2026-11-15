@@ -1,9 +1,10 @@
+import Icon from './Icon'
 import './KeyboardHint.css'
 
 function ResultHint() {
   return (
     <p className="keyboard-hint">
-      <span aria-hidden="true">⌨️</span>
+      <Icon name="keyboard" size={16} />
       <span>
         <kbd>R</kbd> try again
       </span>
@@ -23,7 +24,7 @@ function QuizHint({ optionCount }) {
 
   return (
     <p className="keyboard-hint">
-      <span aria-hidden="true">⌨️</span>
+      <Icon name="keyboard" size={16} />
       <span>
         <kbd>1</kbd> to <kbd>{lastNumber}</kbd> or <kbd>A</kbd> to <kbd>{lastLetter}</kbd> to
         answer
