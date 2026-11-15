@@ -73,8 +73,3 @@
   padding: var(--space-7) var(--space-5);
   text-align: center;
 }
-
-.history-empty-icon {
-  font-size: 3rem;
-  line-height: 1;
-}
