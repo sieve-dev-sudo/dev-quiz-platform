@@ -1,9 +1,10 @@
+import Icon from './Icon'
 import './AnswerFeedback.css'
 
 function getFeedback(isCorrect, timedOut) {
-  if (isCorrect) return { icon: '✓', title: 'Correct!' }
-  if (timedOut) return { icon: '⏰', title: "Time's up!" }
-  return { icon: '✗', title: 'Not quite.' }
+  if (isCorrect) return { icon: 'check', title: 'Correct!' }
+  if (timedOut) return { icon: 'clock', title: "Time's up!" }
+  return { icon: 'x', title: 'Not quite.' }
 }
 
 function AnswerFeedback({ isCorrect, timedOut = false, correctAnswer, explanation }) {
@@ -16,7 +17,7 @@ function AnswerFeedback({ isCorrect, timedOut = false, correctAnswer, explanatio
       aria-live="polite"
     >
       <p className="answer-feedback-title">
-        <span aria-hidden="true">{feedback.icon}</span>
+        <Icon name={feedback.icon} size={20} strokeWidth={2.5} />
         {feedback.title}
       </p>
 
