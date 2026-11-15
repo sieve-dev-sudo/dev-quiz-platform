@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import DonutChart from '../components/DonutChart'
+import Icon from '../components/Icon'
 import { useQuizHistory } from '../hooks/useQuizHistory'
 import {
   getAnswerDistribution,
@@ -16,8 +17,8 @@ function Analytics() {
   if (history.length === 0) {
     return (
       <section className="card analytics-empty">
-        <span className="analytics-empty-icon" aria-hidden="true">
-          🥧
+        <span className="empty-icon" aria-hidden="true">
+          <Icon name="pie-chart" size={32} />
         </span>
         <h2>No analytics yet</h2>
         <p className="text-muted">Finish a quiz to see your charts here.</p>
