@@ -1,4 +1,5 @@
 import { formatDuration, getGrade, getPercent } from '../utils/resultUtils'
+import Icon from './Icon'
 import './ResultSummary.css'
 
 function ResultSummary({
@@ -39,7 +40,7 @@ function ResultSummary({
 
       {isNewBest ? (
         <div className="result-best new" role="status">
-          <span aria-hidden="true">🏆</span>
+          <Icon name="trophy" size={18} />
           <span>
             <strong>New personal best!</strong>
             {previousBest && <> Previous best: {previousBest.percent}%</>}
@@ -48,7 +49,7 @@ function ResultSummary({
       ) : (
         bestScore && (
           <div className="result-best">
-            <span aria-hidden="true">⭐</span>
+            <Icon name="star" size={18} />
             <span>
               Your best: <strong>{bestScore.percent}%</strong> ({bestScore.score} / {bestScore.total})
             </span>
