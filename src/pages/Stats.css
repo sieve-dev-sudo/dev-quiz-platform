@@ -52,6 +52,9 @@
 }
 
 .highlight-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--fs-xs);
   font-weight: 600;
   text-transform: uppercase;
@@ -60,6 +63,9 @@
 }
 
 .highlight-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--fs-lg);
   font-weight: 700;
 }
@@ -68,6 +74,14 @@
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   font-weight: 600;
+}
+
+.highlight-card.strong .highlight-label {
+  color: var(--color-success);
+}
+
+.highlight-card.weak .highlight-label {
+  color: var(--color-warning);
 }
 
 .highlight-card.strong .highlight-value {
@@ -95,11 +109,6 @@
   gap: var(--space-3);
   padding: var(--space-7) var(--space-5);
   text-align: center;
-}
-
-.stats-empty-icon {
-  font-size: 3rem;
-  line-height: 1;
 }
 
 .stats-empty-actions {

@@ -169,13 +169,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: var(--space-1);
   min-width: 0;
-}
-
-.recent-label-icon {
-  font-size: 1.125rem;
-  line-height: 1;
 }
 
 .recent-label-date {

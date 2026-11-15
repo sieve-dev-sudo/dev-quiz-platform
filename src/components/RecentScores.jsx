@@ -1,6 +1,7 @@
 import { getCategoryById } from '../data/categories'
 import { formatDate } from '../utils/historyUtils'
 import { getGrade } from '../utils/resultUtils'
+import TopicIcon from './TopicIcon'
 import './RecentScores.css'
 
 const shortDateFormatter = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric' })
@@ -67,18 +68,14 @@ function RecentScores({ entries }) {
         </div>
 
         <ol className="recent-chart-labels" aria-hidden="true">
-          {entries.map((entry) => {
-            const category = getCategoryById(entry.category)
-
-            return (
-              <li key={entry.id} className="recent-label">
-                <span className="recent-label-icon">{category?.icon ?? '❓'}</span>
-                <span className="recent-label-date">
-                  {shortDateFormatter.format(new Date(entry.finishedAt))}
-                </span>
-              </li>
-            )
-          })}
+          {entries.map((entry) => (
+            <li key={entry.id} className="recent-label">
+              <TopicIcon category={entry.category} size="xs" />
+              <span className="recent-label-date">
+                {shortDateFormatter.format(new Date(entry.finishedAt))}
+              </span>
+            </li>
+          ))}
         </ol>
       </div>
 
