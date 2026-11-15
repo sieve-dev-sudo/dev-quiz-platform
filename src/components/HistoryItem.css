@@ -15,16 +15,6 @@
   border-color: var(--color-primary);
 }
 
-.history-item-icon {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  font-size: 1.5rem;
-  background-color: var(--color-surface-2);
-}
-
 .history-item-info {
   display: flex;
   flex-direction: column;
