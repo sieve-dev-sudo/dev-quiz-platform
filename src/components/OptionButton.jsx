@@ -1,10 +1,11 @@
+import Icon from './Icon'
 import './OptionButton.css'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 
 const STATUS_ICONS = {
-  correct: '✓',
-  wrong: '✗',
+  correct: 'check',
+  wrong: 'x',
 }
 
 function OptionButton({
@@ -29,7 +30,7 @@ function OptionButton({
       aria-keyshortcuts={`${index + 1} ${LETTERS[index]}`}
     >
       <span className="option-letter" aria-hidden={icon ? 'true' : undefined}>
-        {icon ?? LETTERS[index]}
+        {icon ? <Icon name={icon} size={16} strokeWidth={3} /> : LETTERS[index]}
       </span>
       <span className={isCode ? 'option-text code' : 'option-text'}>{text}</span>
     </button>

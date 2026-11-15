@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import Icon from './Icon'
 import './QuestionTimer.css'
 
 function getLevel(timeLeft, seconds) {
@@ -44,7 +45,8 @@ function QuestionTimer({ seconds, isRunning, onExpire }) {
   return (
     <div className={className} role="timer" aria-label={`${timeLeft} seconds left`}>
       <span className="question-timer-value">
-        <span aria-hidden="true">⏱</span> {timeLeft}s
+        <Icon name="clock" size={16} />
+        {timeLeft}s
       </span>
       <div className="question-timer-track">
         <div className="question-timer-fill" style={{ width: `${percent}%` }} />
