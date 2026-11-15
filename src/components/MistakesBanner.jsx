@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getCategoryById } from '../data/categories'
+import Icon from './Icon'
+import TopicIcon from './TopicIcon'
 import './MistakesBanner.css'
 
 function MistakesBanner({ total, countsByCategory }) {
@@ -10,9 +12,7 @@ function MistakesBanner({ total, countsByCategory }) {
   return (
     <section className="mistakes-banner">
       <div className="mistakes-banner-info">
-        <span className="mistakes-banner-icon" aria-hidden="true">
-          🔁
-        </span>
+        <TopicIcon icon="rotate" color="var(--color-warning)" size="lg" />
         <div>
           <h2 className="mistakes-banner-title">Review your mistakes</h2>
           <p className="text-muted">
@@ -32,7 +32,7 @@ function MistakesBanner({ total, countsByCategory }) {
               to={`/quiz?mode=mistakes&category=${categoryId}`}
               className="mistakes-chip"
             >
-              <span aria-hidden="true">{category?.icon}</span>
+              <Icon name={category?.icon} size={14} style={{ color: category?.color }} />
               {category?.name ?? categoryId}
               <span className="mistakes-chip-count">{count}</span>
             </Link>
