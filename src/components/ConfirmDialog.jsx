@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react'
+import Icon from './Icon'
 import './ConfirmDialog.css'
 
 function ConfirmDialog({
   open,
-  icon = '⚠️',
+  icon = 'alert-triangle',
   title,
   message,
   confirmLabel = 'Confirm',
@@ -41,7 +42,7 @@ function ConfirmDialog({
     >
       <div className="confirm-dialog-body">
         <span className="confirm-dialog-icon" aria-hidden="true">
-          {icon}
+          <Icon name={icon} size={28} />
         </span>
         <h2 id="confirm-dialog-title">{title}</h2>
         <p id="confirm-dialog-message" className="text-muted">
