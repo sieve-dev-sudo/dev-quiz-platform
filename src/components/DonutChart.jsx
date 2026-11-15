@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Icon from './Icon'
 import './DonutChart.css'
 
 // A radius of 15.915 makes the circle circumference about 100,
@@ -87,7 +88,9 @@ function DonutChart({ title, description, data, centerValue, centerLabel }) {
               aria-hidden="true"
             />
             <span className="donut-legend-label">
-              {segment.icon && <span aria-hidden="true">{segment.icon}</span>}
+              {segment.icon && (
+                <Icon name={segment.icon} size={16} style={{ color: segment.color }} />
+              )}
               {segment.label}
             </span>
             <span className="donut-legend-value">{segment.value}</span>
