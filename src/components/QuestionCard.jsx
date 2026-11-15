@@ -1,6 +1,7 @@
 import { getCategoryById, getDifficultyById } from '../data/categories'
 import { isCodeQuestion } from '../utils/questionUtils'
 import CodeBlock from './CodeBlock'
+import Icon from './Icon'
 import OptionButton from './OptionButton'
 import './QuestionCard.css'
 
@@ -21,11 +22,17 @@ function QuestionCard({ question, selectedIndex, isAnswered, onSelect }) {
       <header className="question-card-tags">
         {category && (
           <span className="badge">
-            {category.icon} {category.name}
+            <Icon name={category.icon} size={14} />
+            {category.name}
           </span>
         )}
         {difficulty && <span className={`badge ${difficulty.badge}`}>{difficulty.name}</span>}
-        {hasCode && <span className="badge">💻 Code</span>}
+        {hasCode && (
+          <span className="badge">
+            <Icon name="terminal" size={14} />
+            Code
+          </span>
+        )}
       </header>
 
       <h2 className="question-card-title">{question.question}</h2>
