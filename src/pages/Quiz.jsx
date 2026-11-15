@@ -4,6 +4,7 @@ import ProgressBar from '../components/ProgressBar'
 import QuestionTimer from '../components/QuestionTimer'
 import QuestionCard from '../components/QuestionCard'
 import AnswerFeedback from '../components/AnswerFeedback'
+import Icon from '../components/Icon'
 import KeyboardHint from '../components/KeyboardHint'
 import ResultSummary from '../components/ResultSummary'
 import AnswerReview from '../components/AnswerReview'
@@ -45,10 +46,10 @@ function buildStartOptions(isMistakesMode, categoryId, difficultyId) {
 
 function getQuizTitle(isMistakesMode, category) {
   if (isMistakesMode) {
-    return category ? `🔁 ${category.name} Mistakes Review` : '🔁 Mistakes Review'
+    return category ? `${category.name} Mistakes Review` : 'Mistakes Review'
   }
 
-  return category ? `${category.icon} ${category.name} Quiz` : 'Quiz'
+  return category ? `${category.name} Quiz` : 'Quiz'
 }
 
 function Quiz() {
@@ -179,7 +180,7 @@ function Quiz() {
         <h2>{title}</h2>
         <p className="text-muted">
           {isMistakesMode
-            ? 'No mistakes to review. Great job! 🎉'
+            ? 'No mistakes to review. Great job!'
             : 'No questions found for this selection.'}
         </p>
         <div className="quiz-actions">
@@ -247,7 +248,8 @@ function Quiz() {
     <section className="card quiz-box">
       {resumed && (
         <p className="quiz-resumed" role="status">
-          <span aria-hidden="true">↩</span> Welcome back! You continued where you left off.
+          <Icon name="undo" size={16} />
+          Welcome back! You continued where you left off.
         </p>
       )}
 
