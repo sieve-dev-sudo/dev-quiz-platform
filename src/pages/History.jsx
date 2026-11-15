@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import HistoryItem from '../components/HistoryItem'
+import Icon from '../components/Icon'
 import { CATEGORIES } from '../data/categories'
 import { useQuizHistory } from '../hooks/useQuizHistory'
 import './History.css'
@@ -20,8 +21,8 @@ function History() {
   if (history.length === 0) {
     return (
       <section className="card history-empty">
-        <span className="history-empty-icon" aria-hidden="true">
-          📜
+        <span className="empty-icon" aria-hidden="true">
+          <Icon name="list" size={32} />
         </span>
         <h2>No quiz history yet</h2>
         <p className="text-muted">Finish a quiz and your results will show up here.</p>
@@ -59,7 +60,7 @@ function History() {
           <option value="all">All topics</option>
           {CATEGORIES.map((item) => (
             <option key={item.id} value={item.id}>
-              {item.icon} {item.name}
+              {item.name}
             </option>
           ))}
         </select>
