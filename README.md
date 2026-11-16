@@ -25,19 +25,23 @@
 - **សំណួរ ១២០**: មាន ៥ ប្រធានបទ HTML (30), CSS (30), JavaScript (30), React (15), Git (15) និង ៣ កម្រិត Easy, Medium, Hard ចែកស្មើគ្នា
 - **ចំនួនសំណួរតាមកម្រិត**: ជ្រើស Easy, Medium ឬ Hard ដើម្បីធ្វើ 10 សំណួរ (React និង Git 5) ឬ All ដើម្បីធ្វើទាំងអស់ក្នុងប្រធានបទ
 - **សំណួរកូដ (Code Snippet)**: បង្ហាញកូដមានលេខបន្ទាត់ ស្លាកភាសា និងប៊ូតុង **Copy** ហើយសួរថា Output គឺអ្វី
-- **ពិនិត្យចម្លើយភ្លាមៗ**: ពណ៌បៃតង ✓ ពេលត្រូវ ពណ៌ក្រហម ✗ ពេលខុស ព្រមទាំងបង្ហាញចម្លើយត្រូវ និងការពន្យល់
+- **ពិនិត្យចម្លើយភ្លាមៗ**: ពណ៌បៃតង និង icon ✓ ពេលត្រូវ ពណ៌ក្រហម និង icon ✗ ពេលខុស ព្រមទាំងបង្ហាញចម្លើយត្រូវ និងការពន្យល់
 - **Progress Bar**: បង្ហាញ Question X of Y ភាគរយ និងចំណុចពណ៌តាមលទ្ធផលសំណួរនីមួយៗ
 - **Timer និង Shuffle**: កំណត់ពេល 15s, 30s ឬ 60s ក្នុងមួយសំណួរ (អស់ពេលរាប់ជាខុស) និងលាយលំដាប់សំណួរ និងជម្រើស
+- **បន្ត Quiz ដែលធ្វើមិនទាន់ចប់**: Quiz ត្រូវបានរក្សាទុកស្វ័យប្រវត្តិ ពេល Refresh ឬបិទ Browser អាចចុច **Continue** នៅលើ Home ដើម្បីបន្តពីកន្លែងចាស់ ឬ **Discard** ដើម្បីលុបចោល
+- **បញ្ជាក់មុនចាកចេញ**: ពេលកំពុងធ្វើ quiz ហើយចុច Menu ផ្សេង នឹងមានប្រអប់សួរថាចង់ចាកចេញពិតមែនឬទេ
 - **ទំព័រលទ្ធផល**: រង្វង់ភាគរយប្តូរពណ៌តាមពិន្ទុ កម្រិត (Excellent, Great job, Good effort, Keep practicing) ចំនួនត្រូវ ខុស រយៈពេល និង **Review** មាន tab Wrong / All
 - **History**: រក្សាទុកលទ្ធផល ៥០ ចុងក្រោយ ត្រងតាមប្រធានបទ ចុច **Retake** ឬលុបម្តងមួយ
 - **Best Score**: ពិន្ទុខ្ពស់បំផុតតាមប្រធានបទ បង្ហាញលើកាត Home និងសារ **New personal best!**
 - **Review Mistakes**: រក្សាទុកសំណួរដែលឆ្លើយខុស ហើយធ្វើ quiz ឡើងវិញពីសំណួរទាំងនោះ ឆ្លើយត្រូវវិញនឹងដកចេញដោយស្វ័យប្រវត្តិ
-- **Stats Dashboard**: Accuracy, Time spent, ប្រធានបទខ្លាំង និងខ្សោយ Bar Chart ពិន្ទុ ១០ ចុងក្រោយ Topic Breakdown និងប៊ូតុង **Reset data**
+- **Stats Dashboard**: Accuracy, Time spent, ប្រធានបទខ្លាំង និងខ្សោយ Bar Chart ពិន្ទុ ១០ ចុងក្រោយ (មានអ័ក្ស ភាគរយ និង Legend) Topic Breakdown និងប៊ូតុង **Reset data**
+- **Analytics**: Donut Chart ៣ គឺ Quiz តាមប្រធានបទ ចម្លើយត្រូវ និងខុស និង Quiz តាមកម្រិត ដាក់ Mouse លើផ្នែកណាមួយដើម្បីមើលភាគរយ
+- **SVG Icons**: Icon ទាំងអស់គូរដោយ SVG (គ្មាន Library, ដំណើរការ Offline) ពណ៌តាមប្រធានបទនីមួយៗ ហើយប្តូរតាម Light និង Dark ដោយស្វ័យប្រវត្តិ
 - **Theme**: ប្តូរ Light, Dark ឬ System បាន ហើយមិនភ្លឺភ្លែតពេល Refresh
-- **Keyboard Shortcuts**: ចុច 1 ដល់ 4 ឬ A ដល់ D ដើម្បីឆ្លើយ និង Enter ដើម្បីទៅសំណួរបន្ទាប់
+- **Keyboard Shortcuts**: ឆ្លើយ ទៅសំណួរបន្ទាប់ ធ្វើម្តងទៀត និងត្រឡប់ Home ដោយមិនបាច់ប្រើ Mouse ហើយដំណើរការទោះបីប្រើ Keyboard ខ្មែរក៏ដោយ
 - **Responsive**: ដំណើរការលើ Laptop, Tablet និងទូរស័ព្ទ
 - **Accessibility**: ARIA Labels, Focus States, `aria-keyshortcuts` និងគោរព Reduced Motion
-- **ចាំការកំណត់**: ប្រវត្តិ ពិន្ទុខ្ពស់បំផុត សំណួរខុស Settings និង Theme ត្រូវបានរក្សាទុកក្នុង Browser (`localStorage`)
+- **ចាំការកំណត់**: ប្រវត្តិ ពិន្ទុខ្ពស់បំផុត សំណួរខុស Quiz ដែលកំពុងធ្វើ Settings និង Theme ត្រូវបានរក្សាទុកក្នុង Browser (`localStorage`)
 - **គ្មាន Backend**: ដំណើរការ Offline ទាំងស្រុង មិនបាច់ Hosting ទិន្នន័យស្ថិតនៅលើឧបករណ៍របស់អ្នក
 
 ---
@@ -50,39 +54,45 @@ dev-quiz-platform/
 │   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   ├── Header.jsx / .css             → Navbar ជាប់ខាងលើ
+│   │   ├── Header.jsx / .css             → Navbar ជាប់ខាងលើ និងបញ្ជាក់មុនចាកចេញពី quiz
 │   │   ├── Layout.jsx / .css             → ស៊ុមទំព័រទាំងអស់
 │   │   ├── ThemeToggle.jsx / .css        → ប៊ូតុង Light, Dark, System
+│   │   ├── Icon.jsx                      → SVG Line Icons ទាំងអស់
+│   │   ├── TopicIcon.jsx / .css          → Icon ក្នុងប្រអប់ពណ៌តាមប្រធានបទ
 │   │   ├── CategoryCard.jsx / .css       → កាតប្រធានបទលើទំព័រ Home
 │   │   ├── DifficultySelector.jsx / .css → ជ្រើសកម្រិត Easy, Medium, Hard
 │   │   ├── QuizSettings.jsx / .css       → Shuffle និង Timer
 │   │   ├── MistakesBanner.jsx / .css     → Banner សំណួរខុសលើ Home
+│   │   ├── ResumeBanner.jsx / .css       → Banner បន្ត Quiz ដែលមិនទាន់ចប់
 │   │   ├── ProgressBar.jsx / .css        → Question X of Y
 │   │   ├── QuestionTimer.jsx / .css      → រាប់ថយក្រោយក្នុងមួយសំណួរ
 │   │   ├── QuestionCard.jsx / .css       → បង្ហាញសំណួរ និងជម្រើស
 │   │   ├── OptionButton.jsx / .css       → ជម្រើស A, B, C, D
 │   │   ├── CodeBlock.jsx / .css          → បង្ហាញកូដ និងប៊ូតុង Copy
 │   │   ├── AnswerFeedback.jsx / .css     → ត្រូវ, ខុស ឬ Time's up
-│   │   ├── KeyboardHint.jsx / .css
+│   │   ├── KeyboardHint.jsx / .css       → ជំនួយ Shortcut ក្នុង Quiz និងលទ្ធផល
+│   │   ├── ConfirmDialog.jsx / .css      → ប្រអប់បញ្ជាក់ (native dialog)
 │   │   ├── ResultSummary.jsx / .css      → រង្វង់ភាគរយ និង Best Score
 │   │   ├── AnswerReview.jsx / .css       → Review ចម្លើយក្រោយ quiz
 │   │   ├── HistoryItem.jsx / .css
 │   │   ├── StatCard.jsx / .css
 │   │   ├── RecentScores.jsx / .css       → Bar Chart ពិន្ទុចុងក្រោយ
-│   │   └── TopicBreakdown.jsx / .css
+│   │   ├── TopicBreakdown.jsx / .css
+│   │   └── DonutChart.jsx / .css         → Donut Chart សម្រាប់ Analytics
 │   ├── pages/
 │   │   ├── Home.jsx / .css
 │   │   ├── Quiz.jsx / .css
 │   │   ├── History.jsx / .css
-│   │   └── Stats.jsx / .css
+│   │   ├── Stats.jsx / .css
+│   │   └── Analytics.jsx / .css
 │   ├── context/
 │   │   ├── QuizContext.js
-│   │   ├── QuizProvider.jsx              → គ្រប់គ្រង state របស់ quiz
-│   │   └── quizReducer.js                → start, answer, next, finish, reset
+│   │   ├── QuizProvider.jsx              → គ្រប់គ្រង state របស់ quiz និងរក្សាទុក quiz ដែលកំពុងធ្វើ
+│   │   └── quizReducer.js                → start, restore, answer, next, finish, reset
 │   ├── data/
 │   │   ├── questions.json                → សំណួរមូលដ្ឋាន ៣០
 │   │   ├── codeQuestions.json            → សំណួរកូដ ១១
-│   │   ├── categories.js                 → ប្រធានបទ និងកម្រិត
+│   │   ├── categories.js                 → ប្រធានបទ (icon, ពណ៌) និងកម្រិត
 │   │   └── extra/                        → សំណួរបន្ថែមតាមប្រធានបទ
 │   │       ├── html.json                 → +២៣
 │   │       ├── css.json                  → +២២
@@ -91,16 +101,19 @@ dev-quiz-platform/
 │   │       └── git.json                  → +៨
 │   ├── hooks/
 │   │   ├── useQuiz.js
+│   │   ├── useQuizInProgress.js          → ពិនិត្យថាកំពុងធ្វើ quiz ឬអត់
 │   │   ├── useLocalStorage.js            → useState ដែលរក្សាទុកស្វ័យប្រវត្តិ
 │   │   ├── useQuizHistory.js
 │   │   ├── useBestScores.js
 │   │   ├── useMistakes.js
 │   │   ├── useSettings.js
 │   │   ├── useTheme.js
-│   │   └── useQuizShortcuts.js           → Keyboard Shortcuts
+│   │   ├── useQuizShortcuts.js           → Shortcut ពេលធ្វើ quiz
+│   │   └── useResultShortcuts.js         → Shortcut លើទំព័រលទ្ធផល
 │   ├── utils/
 │   │   ├── storage.js                    → អាន និងសរសេរ localStorage
 │   │   ├── storageKeys.js
+│   │   ├── savedQuiz.js                  → អាន និងពិនិត្យ quiz ដែលបានរក្សាទុក
 │   │   ├── questionUtils.js              → Filter និងរាប់សំណួរ
 │   │   ├── shuffle.js                    → Fisher-Yates
 │   │   ├── resultUtils.js                → ភាគរយ, កម្រិត, រយៈពេល
@@ -108,6 +121,7 @@ dev-quiz-platform/
 │   │   ├── bestScoreUtils.js
 │   │   ├── mistakeUtils.js
 │   │   ├── statsUtils.js
+│   │   ├── analyticsUtils.js             → ទិន្នន័យសម្រាប់ Donut Chart
 │   │   ├── settingsUtils.js
 │   │   ├── themeUtils.js
 │   │   └── keyboardUtils.js
@@ -128,6 +142,8 @@ dev-quiz-platform/
 
 ## ⌨️ Keyboard
 
+**ពេលធ្វើ Quiz**
+
 | គ្រាប់ចុច | មុខងារ |
 |---|---|
 | `1` ដល់ `4` | ជ្រើសចម្លើយ |
@@ -135,14 +151,30 @@ dev-quiz-platform/
 | `Enter` | ទៅសំណួរបន្ទាប់ ឬ Finish (ក្រោយឆ្លើយរួច) |
 | `Tab` / `Shift + Tab` | ផ្លាស់ទីរវាងប៊ូតុង និងជម្រើស |
 
+**លើទំព័រលទ្ធផល**
+
+| គ្រាប់ចុច | មុខងារ |
+|---|---|
+| `R` | Try Again (ធ្វើម្តងទៀត) |
+| `H` | Back to Home |
+
+**ក្នុងប្រអប់បញ្ជាក់**
+
+| គ្រាប់ចុច | មុខងារ |
+|---|---|
+| `Esc` | បិទប្រអប់ ហើយនៅបន្ត quiz |
+
+> Shortcut អក្សរ (A ដល់ D, R, H) ដំណើរការទាំង Keyboard English និង Keyboard ខ្មែរ ព្រោះវាពិនិត្យទីតាំងគ្រាប់ចុច មិនមែនអក្សរដែលវាយចេញ។
+
 ---
 
 ## 📱 Mobile Mode
 
-- Header ចុះជាពីរជួរ: ឈ្មោះ **DevQuiz Platform** និងប៊ូតុង Theme នៅខាងលើ ហើយ Menu Home / History / Stats ពេញទទឹងនៅខាងក្រោម
+- Header ចុះជាពីរជួរ: ឈ្មោះ **DevQuiz Platform** និងប៊ូតុង Theme នៅខាងលើ ហើយ Menu Home / History / Stats / Analytics ពេញទទឹងនៅខាងក្រោម
 - កាតប្រធានបទរៀប ២ ជួរឈរ ហើយ Difficulty ជាប្រអប់ 2×2 លើទូរស័ព្ទតូច
 - ប៊ូតុង **Start Quiz** ពេញទទឹង ហើយជាប់នៅខាងក្រោមអេក្រង់ពេល Scroll
-- ប៊ូតុងក្នុងទំព័រលទ្ធផលចុះជាជួរឈរ ងាយចុចដោយមេដៃ
+- ប៊ូតុងក្នុងទំព័រលទ្ធផល និងប្រអប់បញ្ជាក់ចុះជាជួរឈរ ងាយចុចដោយមេដៃ
+- Donut Chart ក្នុង Analytics រៀបមួយជួរឈរ
 - Code Block រំកិលផ្តេកបាន ដោយទំព័រមិនរីកធំ
 - ប៊ូតុងទាំងអស់មានកម្ពស់យ៉ាងតិច 44px
 
@@ -175,7 +207,7 @@ dev-quiz-platform/
    npm run dev
    ```
 
-4. បើក Browser ចូល `http://localhost:5173` ហើយសាកល្បងជ្រើសប្រធានបទ និងកម្រិត ធ្វើ quiz បើក Timer ប្តូរ Theme និងចូលទំព័រ History និង Stats។
+4. បើក Browser ចូល `http://localhost:5173` ហើយសាកល្បងជ្រើសប្រធានបទ និងកម្រិត ធ្វើ quiz បើក Timer ប្តូរ Theme Refresh ពាក់កណ្តាល quiz ដើម្បីសាក **Continue** និងចូលទំព័រ History, Stats និង Analytics។
 5. ដើម្បីពិនិត្យកូដ (Lint):
 
    ```bash
